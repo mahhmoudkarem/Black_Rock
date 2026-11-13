@@ -1,0 +1,47 @@
+<section class="videos">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-14 items-center">
+
+      <div class="lg:col-span-2">
+        <span class="eyebrow on-light">{{ lang.t('SEE IT IN REAL LIFE', 'شاهده على الطبيعة') }}</span>
+
+        <h2 class="sec-title mt-5">
+          {{ lang.t('Watch Our Stone Up Close', 'شاهد أحجارنا عن قرب') }}
+        </h2>
+
+        <p class="text">
+          {{
+            lang.t(
+              'Photos can only show so much. Watch real footage of our stones to see their true color, texture and finish.',
+              'الصور وحدها لا تكفي. شاهد لقطات حقيقية لأحجارنا لترى اللون والملمس والتشطيب كما هم على الطبيعة.'
+            )
+          }}
+        </p>
+
+        <div class="line"></div>
+      </div>
+
+      <div class="lg:col-span-3 cards">
+        @for (p of videos; track p.slug) {
+          <figure class="vcard">
+            @if (playing() === p.slug) {
+              <video [src]="p.video" [poster]="p.videoPoster" controls autoplay playsinline></video>
+            } @else {
+              <button type="button" class="poster" (click)="play(p.slug)" [attr.aria-label]="lang.t('Play video', 'تشغيل الفيديو') + ': ' + lang.l(p.name)">
+                <img [src]="p.videoPoster" [alt]="lang.l(p.name)" loading="lazy" />
+                <span class="shade"></span>
+                <span class="play"><fa-icon [icon]="faPlay"></fa-icon></span>
+              </button>
+            }
+
+            <figcaption>
+              <strong>{{ lang.l(p.name) }}</strong>
+              <span>{{ lang.l(p.finish) }}</span>
+            </figcaption>
+          </figure>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

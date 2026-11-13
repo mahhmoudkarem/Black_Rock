@@ -1,0 +1,98 @@
+<app-page-hero
+  [eyebrow]="{ en: 'OUR PROJECTS', ar: 'مشاريعنا' }"
+  [title]="{ en: 'Spaces Shaped By Stone', ar: 'مساحات صنعها الحجر' }"
+  [subtitle]="{
+    en: 'From coastal resorts to modern residential compounds, explore the projects where natural stone makes the difference.',
+    ar: 'من القرى الساحلية إلى الكمبوندات السكنية الحديثة، اكتشف المشاريع التي يصنع فيها الحجر الطبيعي الفرق.'
+  }"
+  image="/images/about/about-hero.jpg"
+  [crumbs]="[{ label: { en: 'Projects', ar: 'المشاريع' } }]"
+/>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="stats-grid">
+      @for (s of stats; track s.label.en; let i = $index) {
+        <div appReveal [revealDelay]="i * 100" class="stat">
+          <strong>{{ s.value }}</strong>
+          <span>{{ lang.l(s.label) }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Featured carousel -->
+<section class="featured">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div appReveal class="head">
+      <span class="eyebrow on-light">{{ lang.t('FEATURED PROJECTS', 'مشاريع مميزة') }}</span>
+      <h2 class="sec-title mt-4">{{ lang.t('Highlights From Our Portfolio', 'أبرز أعمالنا') }}</h2>
+    </div>
+
+    <div appReveal [revealDelay]="120">
+      <app-spotlight-carousel [slides]="slides" />
+    </div>
+  </div>
+</section>
+
+<!-- All projects -->
+<section class="all">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div appReveal class="head">
+      <span class="eyebrow on-light">{{ lang.t('PORTFOLIO', 'معرض الأعمال') }}</span>
+      <h2 class="sec-title mt-4">{{ lang.t('All Projects', 'كل المشاريع') }}</h2>
+    </div>
+
+    <div appReveal [revealDelay]="80" class="chips">
+      @for (f of filters; track f.key) {
+        <button
+          type="button"
+          class="chip"
+          [class.on]="filter() === f.key"
+          [attr.aria-pressed]="filter() === f.key"
+          (click)="filter.set(f.key)"
+        >
+          {{ lang.l(f.label) }}
+        </button>
+      }
+    </div>
+
+    <div class="grid">
+      @for (p of filtered(); track p.id; let i = $index) {
+        <div appReveal [revealDelay]="(i % 3) * 90">
+          <article class="card">
+            <div class="photo">
+              <img [src]="p.image" [alt]="lang.l(p.name)" loading="lazy" />
+              <span class="type">{{ lang.l(typeLabel[p.type]) }}</span>
+              <span class="shade"></span>
+              <span class="loc">
+                <fa-icon [icon]="faPin"></fa-icon>
+                {{ lang.l(p.location) }}
+              </span>
+            </div>
+
+            <div class="body">
+              <h3 class="name">{{ lang.l(p.name) }}</h3>
+              <p class="summary">{{ lang.l(p.summary) }}</p>
+
+              <div class="tags">
+                @for (h of p.highlights; track h.en) {
+                  <span class="tag">{{ lang.l(h) }}</span>
+                }
+              </div>
+
+              <button type="button" class="ask" (click)="discuss(p)">
+                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                {{ lang.t('Discuss A Similar Project', 'ناقش مشروعًا مشابهًا') }}
+              </button>
+            </div>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-cta-section />

@@ -1,0 +1,137 @@
+<section
+  class="hero"
+  (mouseenter)="paused.set(true)"
+  (mouseleave)="paused.set(false)"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+  [attr.aria-roledescription]="'carousel'"
+>
+  <!-- Background slides -->
+  <div class="hero-slides" aria-hidden="true">
+    @for (slide of slides; track slide.image; let i = $index) {
+      <div class="hero-slide" [class.active]="i === current()">
+        <img
+          [src]="slide.image"
+          alt=""
+          class="hero-img"
+          [attr.fetchpriority]="i === 0 ? 'high' : null"
+          [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+        />
+      </div>
+    }
+  </div>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <!-- Decorative gold frame -->
+  <div class="hero-frame" aria-hidden="true"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 hero-inner">
+
+    <!-- Text (re-animates on every slide change) -->
+    <div class="hero-content">
+      @for (slide of slides; track slide.image; let i = $index) {
+        @if (i === current()) {
+          <div class="hero-text">
+            <span class="stone-chip">
+              <span class="chip-dot"></span>
+              {{ lang.l(slide.stone) }}
+            </span>
+
+            <h1 class="hero-title">
+              {{ lang.l(slide.title) }}
+            </h1>
+
+            <p class="hero-desc">
+              {{ lang.l(slide.text) }}
+            </p>
+
+            <div class="hero-actions">
+              <a routerLink="/products" class="btn-gold">
+                {{ lang.t('Explore The Collection', 'اكتشف المجموعة') }}
+                <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+              </a>
+
+              <button type="button" class="btn-ghost" (click)="inquire()">
+                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                {{ lang.t('Get A Quote', 'اطلب عرض سعر') }}
+              </button>
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="hero-bottom">
+
+      <!-- Quick contacts -->
+      <div class="quick-contacts">
+        <a [href]="'tel:' + site.phone" class="qc-item" dir="ltr">
+          <span class="qc-icon"><fa-icon [icon]="faPhone"></fa-icon></span>
+          <span>{{ site.phoneDisplay }}</span>
+        </a>
+
+        <a
+          [href]="site.instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="qc-item"
+          dir="ltr"
+        >
+          <span class="qc-icon"><fa-icon [icon]="faInstagram"></fa-icon></span>
+          <span>{{ site.instagramHandle }}</span>
+        </a>
+      </div>
+
+      <!-- Slider controls -->
+      <div class="slider-controls">
+
+        <div class="thumbs" role="tablist">
+          @for (slide of slides; track slide.image; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="thumb"
+              [class.active]="i === current()"
+              [class.paused]="paused()"
+              [attr.aria-selected]="i === current()"
+              [attr.aria-label]="lang.l(slide.stone)"
+              (click)="goTo(i)"
+            >
+              <img [src]="slide.image" alt="" loading="lazy" />
+              <span class="thumb-progress"></span>
+            </button>
+          }
+        </div>
+
+        <div class="counter" dir="ltr">
+          <strong>{{ pad(current() + 1) }}</strong>
+          <span class="counter-line"></span>
+          <span>{{ pad(slides.length) }}</span>
+        </div>
+
+        <div class="arrows">
+          <button
+            type="button"
+            class="arrow-btn"
+            (click)="prev()"
+            [attr.aria-label]="lang.t('Previous', 'السابق')"
+          >
+            <fa-icon [icon]="faPrev" class="rtl-flip"></fa-icon>
+          </button>
+          <button
+            type="button"
+            class="arrow-btn"
+            (click)="next()"
+            [attr.aria-label]="lang.t('Next', 'التالي')"
+          >
+            <fa-icon [icon]="faNext" class="rtl-flip"></fa-icon>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

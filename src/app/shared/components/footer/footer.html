@@ -1,0 +1,199 @@
+
+<footer
+  class="footer-wrapper"
+  [attr.dir]="isArabic ? 'rtl' : 'ltr'"
+>
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <!-- Main Footer -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
+
+      <!-- Brand Information -->
+      <div>
+        <a routerLink="/" class="inline-block mb-6">
+          <h2 class="brand-name text-3xl text-white">
+            BLACK <span class="text-[#B08D57]">ROCK</span>
+          </h2>
+
+          <span class="brand-tagline block text-gray-400 mt-1">
+            {{ isArabic ? 'للرخام والجرانيت' : 'MARBLE & GRANITE' }}
+          </span>
+        </a>
+
+        <p class="text-gray-400 text-sm leading-8 mb-7">
+          {{
+            isArabic
+              ? 'بلاك روك، وجهتك المثالية لعالم الرخام والجرانيت. نقدم أجود أنواع الأحجار الطبيعية بتصميمات مميزة وجودة تلبي أعلى التوقعات.'
+              : 'Black Rock is your destination for premium marble and granite. We offer high-quality natural stones with exceptional designs and craftsmanship.'
+          }}
+        </p>
+
+        <!-- Social Media -->
+        <div class="flex items-center gap-3">
+
+          <a
+            [href]="facebookLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="social-link"
+          >
+            <fa-icon [icon]="faFacebook"></fa-icon>
+          </a>
+
+          <a
+            [href]="instagramLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="social-link"
+          >
+            <fa-icon [icon]="faInstagram"></fa-icon>
+          </a>
+
+          <a
+            [href]="linkedinLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="social-link"
+          >
+            <fa-icon [icon]="faLinkedin"></fa-icon>
+          </a>
+
+          <a
+            [href]="whatsappLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            class="social-link"
+          >
+            <fa-icon [icon]="faWhatsapp"></fa-icon>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="footer-heading">
+          {{ isArabic ? 'روابط سريعة' : 'Quick Links' }}
+        </h3>
+
+        <ul class="space-y-4">
+          <li>
+            <a routerLink="/" class="footer-link">
+              {{ isArabic ? 'الرئيسية' : 'Home' }}
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/about" class="footer-link">
+              {{ isArabic ? 'من نحن' : 'About Us' }}
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/products" class="footer-link">
+              {{ isArabic ? 'منتجاتنا' : 'Our Products' }}
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/projects" class="footer-link">
+              {{ isArabic ? 'مشروعاتنا' : 'Our Projects' }}
+            </a>
+          </li>
+
+          <li>
+            <a routerLink="/contact" class="footer-link">
+              {{ isArabic ? 'تواصل معنا' : 'Contact Us' }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Our Products -->
+      <div>
+        <h3 class="footer-heading">
+          {{ isArabic ? 'منتجاتنا' : 'Our Products' }}
+        </h3>
+
+        <ul class="space-y-4">
+          @for (stone of stones.slice(0, 6); track stone.id) {
+            <li>
+              <a [routerLink]="['/products', stone.slug]" class="footer-link">
+                {{ lang.l(stone.name) }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact Information -->
+      <div>
+        <h3 class="footer-heading">
+          {{ isArabic ? 'تواصل معنا' : 'Get In Touch' }}
+        </h3>
+
+        <ul class="space-y-6">
+
+          <li class="contact-item">
+            <fa-icon [icon]="faLocationDot"></fa-icon>
+            <span>
+              {{ isArabic ? 'القاهرة، مصر' : 'Cairo, Egypt' }}
+            </span>
+          </li>
+
+          <li class="contact-item">
+            <fa-icon [icon]="faPhone"></fa-icon>
+            <a [href]="'tel:' + site.phone" dir="ltr">
+              {{ site.phoneDisplay }}
+            </a>
+          </li>
+
+          <li class="contact-item">
+            <fa-icon [icon]="faEnvelope"></fa-icon>
+            <a [href]="'mailto:' + site.email" dir="ltr">
+              {{ site.email }}
+            </a>
+          </li>
+
+
+          <li class="contact-item">
+            <fa-icon [icon]="faInstagram"></fa-icon>
+            <a [href]="instagramLink" target="_blank" rel="noopener noreferrer" dir="ltr">
+              {{ site.instagramHandle }}
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="footer-bottom">
+
+      <p class="text-gray-500 text-xs text-center">
+        © {{ currentYear }} BLACK ROCK.
+        {{
+          isArabic
+            ? 'جميع الحقوق محفوظة.'
+            : 'All Rights Reserved.'
+        }}
+      </p>
+
+      <button
+        type="button"
+        (click)="scrollToTop()"
+        class="back-to-top"
+      >
+        {{ isArabic ? 'العودة للأعلى' : 'Back To Top' }}
+        <fa-icon [icon]="faArrowUp"></fa-icon>
+      </button>
+
+    </div>
+
+  </div>
+</footer>

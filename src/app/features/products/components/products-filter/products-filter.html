@@ -1,0 +1,52 @@
+<div class="filter">
+  @if (showFinish()) {
+  <div class="group">
+    <span class="label">{{ lang.t('Finish', 'التشطيب') }}</span>
+    <div class="chips">
+      @for (o of finishes; track o.key) {
+        <button
+          type="button"
+          class="chip"
+          [class.on]="finish() === o.key"
+          [attr.aria-pressed]="finish() === o.key"
+          (click)="finish.set(o.key)"
+        >
+          {{ lang.l(o.label) }}
+        </button>
+      }
+    </div>
+  </div>
+  }
+
+  <div class="group">
+    <span class="label">{{ lang.t('Color', 'اللون') }}</span>
+    <div class="chips">
+      @for (o of visibleTones(); track o.key) {
+        <button
+          type="button"
+          class="chip"
+          [class.on]="tone() === o.key"
+          [attr.aria-pressed]="tone() === o.key"
+          (click)="tone.set(o.key)"
+        >
+          @if (o.swatch) {
+            <span class="sw" [style.background]="o.swatch"></span>
+          }
+          {{ lang.l(o.label) }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="result">
+    <span>
+      <strong>{{ total() }}</strong>
+      {{ lang.t(total() === 1 ? 'stone found' : 'stones found', 'نوع متاح') }}
+    </span>
+    @if (finish() !== 'all' || tone() !== 'all') {
+      <button type="button" class="reset" (click)="reset()">
+        {{ lang.t('Clear filters', 'مسح الفلاتر') }}
+      </button>
+    }
+  </div>
+</div>

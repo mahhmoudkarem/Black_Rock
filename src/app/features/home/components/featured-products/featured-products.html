@@ -1,0 +1,127 @@
+<section class="featured">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="head">
+      <div class="head-text">
+        <span class="eyebrow on-light">{{ lang.t('OUR COLLECTION', 'مجموعتنا') }}</span>
+        <h2 class="sec-title mt-5">
+          {{ lang.t('Discover Our Signature Stones', 'اكتشف أحجارنا المميزة') }}
+        </h2>
+        <p class="sub">
+          {{
+            lang.t(
+              'Swipe or use the arrows to browse. Tap any stone to see all its photos and videos.',
+              'اسحب أو استخدم الأسهم للتصفح. اضغط على أي نوع لمشاهدة كل صوره وفيديوهاته.'
+            )
+          }}
+        </p>
+      </div>
+
+      <div class="arrows">
+        <button type="button" class="arrow" (click)="prev()" [attr.aria-label]="lang.t('Previous', 'السابق')">
+          <fa-icon [icon]="faPrev" class="rtl-flip"></fa-icon>
+        </button>
+        <button type="button" class="arrow" (click)="next()" [attr.aria-label]="lang.t('Next', 'التالي')">
+          <fa-icon [icon]="faNext" class="rtl-flip"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div
+      class="viewport"
+      [class.dragging]="dragging()"
+      tabindex="0"
+      role="region"
+      aria-roledescription="carousel"
+      [attr.aria-label]="lang.t('Stone collection', 'مجموعة الأحجار')"
+      (pointerdown)="onPointerDown($event)"
+      (pointermove)="onPointerMove($event)"
+      (pointerup)="onPointerUp($event)"
+      (pointercancel)="onPointerUp($event)"
+      (keydown)="onKey($event)"
+    >
+      <div
+        class="track"
+        [class.no-anim]="dragging()"
+        [style.--i]="index()"
+        [style.--n]="perView()"
+        [style.--gap]="gap + 'px'"
+        [style.--sign]="sign()"
+        [style.--drag]="dragX() + 'px'"
+      >
+        @for (p of products; track p.id; let i = $index) {
+          <article class="slide" (click)="open(p)">
+            <div class="photo">
+              <img [src]="p.cover" [alt]="lang.l(p.name)" loading="lazy" draggable="false" />
+
+              <span class="num">{{ pad(i + 1) }}</span>
+              <span class="finish">{{ lang.l(p.finish) }}</span>
+
+              <div class="photo-shade"></div>
+
+              <div class="photo-info">
+                <span class="count">
+                  <fa-icon [icon]="faExpand"></fa-icon>
+                  {{ p.images.length }} {{ lang.t('photos', 'صور') }}
+                </span>
+                @if (p.video) {
+                  <span class="count">
+                    <fa-icon [icon]="faPlay"></fa-icon>
+                    {{ lang.t('Video', 'فيديو') }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <div class="body">
+              <h3 class="p-name">{{ lang.l(p.name) }}</h3>
+
+              <div class="p-color">
+                <span class="dot" [style.background]="p.swatch"></span>
+                {{ lang.l(p.color) }}
+              </div>
+
+              <p class="p-desc">{{ lang.l(p.description) }}</p>
+
+              <div class="tags">
+                @for (a of p.applications; track a.en) {
+                  <span class="tag">{{ lang.l(a) }}</span>
+                }
+              </div>
+
+              <button type="button" class="ask" (click)="inquire(p, $event)">
+                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                {{ lang.t('Inquire On WhatsApp', 'استفسر عبر واتساب') }}
+              </button>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+
+    <!-- Dots + link -->
+    <div class="foot">
+      <div class="dots">
+        @for (d of dots(); track d) {
+          <button
+            type="button"
+            class="dot-btn"
+            [class.on]="d === index()"
+            (click)="goTo(d)"
+            [attr.aria-label]="lang.t('Go to slide', 'اذهب إلى الشريحة') + ' ' + (d + 1)"
+          ></button>
+        }
+      </div>
+
+      <a routerLink="/products" class="all-link">
+        {{ lang.t('Browse The Full Catalogue', 'تصفح الكتالوج كاملًا') }}
+        <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  @if (selected(); as product) {
+    <app-stone-lightbox [product]="product" (closed)="selected.set(null)" />
+  }
+</section>

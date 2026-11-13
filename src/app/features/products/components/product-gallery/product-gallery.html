@@ -1,0 +1,35 @@
+<div class="gallery">
+  <div class="stage">
+    @if (active(); as m) {
+      @if (m.type === 'video') {
+        <video [src]="m.src" [poster]="m.poster" controls playsinline></video>
+      } @else {
+        <img [src]="m.src" [alt]="lang.l(product().name)" />
+      }
+    }
+
+    @if (media().length > 1) {
+      <button type="button" class="nav prev" (click)="prev()" [attr.aria-label]="lang.t('Previous', 'السابق')">
+        <fa-icon [icon]="faPrev" class="rtl-flip"></fa-icon>
+      </button>
+      <button type="button" class="nav next" (click)="next()" [attr.aria-label]="lang.t('Next', 'التالي')">
+        <fa-icon [icon]="faNext" class="rtl-flip"></fa-icon>
+      </button>
+    }
+
+    <span class="counter" dir="ltr">{{ index() + 1 }} / {{ media().length }}</span>
+  </div>
+
+  @if (media().length > 1) {
+    <div class="thumbs">
+      @for (m of media(); track m.src; let i = $index) {
+        <button type="button" class="thumb" [class.on]="i === index()" (click)="index.set(i)" [attr.aria-label]="(i + 1).toString()">
+          <img [src]="m.type === 'video' ? m.poster : m.src" alt="" loading="lazy" />
+          @if (m.type === 'video') {
+            <span class="play"><fa-icon [icon]="faPlay"></fa-icon></span>
+          }
+        </button>
+      }
+    </div>
+  }
+</div>

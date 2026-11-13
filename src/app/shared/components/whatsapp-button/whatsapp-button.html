@@ -1,0 +1,8 @@
+<button
+  type="button"
+  class="whatsapp-float"
+  (click)="open()"
+  [attr.aria-label]="lang.isArabic() ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp'"
+>
+  <fa-icon [icon]="faWhatsapp"></fa-icon>
+</button>

@@ -1,0 +1,373 @@
+
+:host {
+  display: block;
+}
+
+/* =========================
+   Shared Styles
+========================= */
+
+.section-eyebrow {
+  display: inline-block;
+  color: #B08D57;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+[dir='rtl'] .section-eyebrow {
+  letter-spacing: 0;
+}
+
+.dark-eyebrow {
+  color: #A17C45;
+}
+
+.section-title {
+  color: #222625;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.primary-btn,
+.outline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 25px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background: #B08D57;
+  color: #222625;
+}
+
+.primary-btn:hover {
+  background: #ffffff;
+  transform: translateY(-3px);
+}
+
+.outline-btn {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.outline-btn:hover {
+  background: #ffffff;
+  color: #222625;
+}
+
+.text-link {
+  color: #A17C45;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.text-link:hover {
+  color: #222625;
+  gap: 18px;
+}
+
+.check-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(176, 141, 87, 0.15);
+  color: #A17C45;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.about-hero {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  padding: 100px 0;
+  background-image: url('/images/about/about-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #222625;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 24, 23, 0.95) 0%,
+    rgba(20, 24, 23, 0.82) 45%,
+    rgba(20, 24, 23, 0.35) 100%
+  );
+}
+
+[dir='rtl'] .about-hero-overlay {
+  background: linear-gradient(
+    270deg,
+    rgba(20, 24, 23, 0.95) 0%,
+    rgba(20, 24, 23, 0.82) 45%,
+    rgba(20, 24, 23, 0.35) 100%
+  );
+}
+
+
+/* =========================
+   Breadcrumb
+========================= */
+
+.breadcrumb-section {
+  background: #ffffff;
+  padding: 18px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.breadcrumb-section a {
+  color: #777777;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-section a:hover {
+  color: #B08D57;
+}
+
+.breadcrumb-section span {
+  color: #B08D57;
+}
+
+
+/* =========================
+   About Images
+========================= */
+
+.about-image-wrapper {
+  position: relative;
+  min-height: 480px;
+  padding: 0 35px 35px 0;
+}
+
+[dir='rtl'] .about-image-wrapper {
+  padding: 0 0 35px 35px;
+}
+
+.main-about-image {
+  width: 85%;
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.main-about-image img,
+.secondary-about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.main-about-image:hover img,
+.secondary-about-image:hover img {
+  transform: scale(1.06);
+}
+
+.secondary-about-image {
+  position: absolute;
+  width: 48%;
+  height: 210px;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+  border: 8px solid #F5F3EE;
+  overflow: hidden;
+}
+
+[dir='rtl'] .secondary-about-image {
+  right: auto;
+  left: 0;
+}
+
+.image-decoration {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  width: 150px;
+  height: 150px;
+  border-top: 3px solid #B08D57;
+  border-right: 3px solid #B08D57;
+  z-index: 1;
+}
+
+[dir='rtl'] .image-decoration {
+  right: auto;
+  left: 15px;
+  border-right: 0;
+  border-left: 3px solid #B08D57;
+}
+
+
+/* =========================
+   Vision & Mission
+========================= */
+
+.vision-card {
+  padding: 45px 38px;
+  background: #F5F3EE;
+  border-bottom: 3px solid transparent;
+  transition: all 0.4s ease;
+}
+
+.vision-card:hover {
+  border-bottom-color: #B08D57;
+  transform: translateY(-7px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   Feature Cards
+========================= */
+
+.advantage-card {
+  padding: 35px 25px;
+  background: #ffffff;
+  border: 1px solid #e9e5dc;
+  transition: all 0.4s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-8px);
+  border-color: #B08D57;
+  box-shadow: 0 15px 35px rgba(34, 38, 37, 0.07);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(176, 141, 87, 0.13);
+  color: #A17C45;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+
+.vision-card:hover .feature-icon,
+.advantage-card:hover .feature-icon {
+  background: #B08D57;
+  color: #ffffff;
+}
+
+
+/* =========================
+   Stone Banner
+========================= */
+
+.stone-section {
+  position: relative;
+  padding: 110px 0;
+  background-image: url('/images/about/marble-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #222625;
+}
+
+.stone-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 29, 27, 0.85);
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 55px;
+  background: #222625;
+  border-left: 4px solid #B08D57;
+}
+
+[dir='rtl'] .cta-box {
+  border-left: 0;
+  border-right: 4px solid #B08D57;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: 500px;
+    padding: 75px 0;
+    background-position: center;
+  }
+
+  .about-image-wrapper {
+    min-height: 390px;
+  }
+
+  .main-about-image {
+    height: 340px;
+  }
+
+  .secondary-about-image {
+    height: 160px;
+  }
+
+  .cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-image-wrapper {
+    min-height: 330px;
+    padding-right: 20px;
+  }
+
+  [dir='rtl'] .about-image-wrapper {
+    padding-right: 0;
+    padding-left: 20px;
+  }
+
+  .main-about-image {
+    width: 90%;
+    height: 290px;
+  }
+
+  .secondary-about-image {
+    width: 52%;
+    height: 130px;
+  }
+
+  .image-decoration {
+    width: 100px;
+    height: 100px;
+  }
+}

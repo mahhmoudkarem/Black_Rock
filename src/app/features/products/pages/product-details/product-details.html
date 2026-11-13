@@ -1,0 +1,105 @@
+@if (product(); as p) {
+  <app-page-hero
+    [eyebrow]="p.category === 'granite' ? { en: 'GRANITE', ar: 'جرانيت' } : p.finish"
+    [title]="p.name"
+    [subtitle]="p.description"
+    [image]="p.cover"
+    [crumbs]="[
+      { label: { en: 'Products', ar: 'المنتجات' }, link: '/products/' + p.category },
+      {
+        label: p.category === 'granite' ? { en: 'Granite', ar: 'الجرانيت' } : { en: 'Marble', ar: 'الرخام' },
+        link: '/products/' + p.category
+      },
+      { label: p.name }
+    ]"
+  />
+
+  <section class="details">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="layout">
+
+        <div appReveal class="gal">
+          <app-product-gallery [product]="p" />
+        </div>
+
+        <div appReveal [revealDelay]="120" class="info">
+          <span class="eyebrow on-light">{{ lang.t('STONE DETAILS', 'تفاصيل الحجر') }}</span>
+          <h2 class="sec-title mt-4">{{ lang.l(p.name) }}</h2>
+          <p class="desc">{{ lang.l(p.description) }}</p>
+
+          <dl class="specs">
+            <div>
+              <dt>{{ lang.t('Category', 'النوع') }}</dt>
+              <dd>{{ p.category === 'granite' ? lang.t('Natural Granite', 'جرانيت طبيعي') : lang.t('Natural Marble', 'رخام طبيعي') }}</dd>
+            </div>
+            <div>
+              <dt>{{ lang.t('Finish', 'التشطيب') }}</dt>
+              <dd>{{ lang.l(p.finish) }}</dd>
+            </div>
+            <div>
+              <dt>{{ lang.t('Color', 'اللون') }}</dt>
+              <dd>
+                <span class="dot" [style.background]="p.swatch"></span>
+                {{ lang.l(p.color) }}
+              </dd>
+            </div>
+            <div>
+              <dt>{{ lang.t('Media', 'الوسائط') }}</dt>
+              <dd>
+                {{ p.images.length }} {{ p.images.length === 1 ? lang.t('photo', 'صورة') : lang.t('photos', 'صور') }}
+                @if (p.video) { + {{ lang.t('video', 'فيديو') }} }
+              </dd>
+            </div>
+          </dl>
+
+          <h3 class="sub">{{ lang.t('Recommended Uses', 'الاستخدامات المقترحة') }}</h3>
+          <div class="tags">
+            @for (a of p.applications; track a.en) {
+              <span class="tag">{{ lang.l(a) }}</span>
+            }
+          </div>
+
+          <div class="actions">
+            <button type="button" class="btn-gold" (click)="inquire()">
+              <fa-icon [icon]="faWhatsapp"></fa-icon>
+              {{ lang.t('Inquire On WhatsApp', 'استفسر عبر واتساب') }}
+            </button>
+
+            <a [href]="'tel:' + site.phone" class="call" dir="ltr">
+              <fa-icon [icon]="faPhone"></fa-icon>
+              {{ site.phoneDisplay }}
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  @if (related().length) {
+    <section class="related">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div appReveal class="head">
+          <span class="eyebrow on-light">{{ lang.t('YOU MAY ALSO LIKE', 'قد يعجبك أيضًا') }}</span>
+          <h2 class="sec-title mt-4">{{ lang.t('Similar Stones', 'أحجار مشابهة') }}</h2>
+        </div>
+        <app-products-grid [products]="related()" />
+      </div>
+    </section>
+  }
+} @else {
+  <section class="missing">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+      <h1 class="sec-title">{{ lang.t('Stone not found', 'لم يتم العثور على هذا النوع') }}</h1>
+      <p class="desc">
+        {{ lang.t('The stone you are looking for does not exist or was moved.', 'النوع الذي تبحث عنه غير موجود أو تم نقله.') }}
+      </p>
+      <a routerLink="/products" class="btn-gold">
+        {{ lang.t('Back To Products', 'العودة إلى المنتجات') }}
+        <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+      </a>
+    </div>
+  </section>
+}
+
+<app-cta-section />

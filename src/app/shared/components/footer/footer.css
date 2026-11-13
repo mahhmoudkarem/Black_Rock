@@ -1,0 +1,139 @@
+
+:host {
+  display: block;
+}
+
+.footer-wrapper {
+  background-color: #222625;
+  color: #ffffff;
+  border-top: 1px solid rgba(176, 141, 87, 0.2);
+}
+
+/* Headings */
+.footer-heading {
+  position: relative;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  padding-bottom: 12px;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #B08D57;
+}
+
+[dir='ltr'] .footer-heading::after {
+  left: 0;
+}
+
+[dir='rtl'] .footer-heading::after {
+  right: 0;
+}
+
+/* Links */
+.footer-link {
+  display: inline-block;
+  color: #9ca3af;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #B08D57;
+}
+
+[dir='ltr'] .footer-link:hover {
+  transform: translateX(5px);
+}
+
+[dir='rtl'] .footer-link:hover {
+  transform: translateX(-5px);
+}
+
+/* Social Media */
+.social-link {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background-color: #B08D57;
+  border-color: #B08D57;
+  color: #222625;
+  transform: translateY(-4px);
+}
+
+/* Contact */
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.contact-item fa-icon {
+  color: #B08D57;
+  margin-top: 4px;
+}
+
+.contact-item a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+  color: #B08D57;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+  min-height: 75px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #B08D57;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}

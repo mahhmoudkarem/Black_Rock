@@ -1,0 +1,152 @@
+:host {
+  display: block;
+}
+
+.details {
+  padding: 90px 0 70px;
+  background: #fff;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.gal {
+  position: sticky;
+  top: 100px;
+}
+
+.desc {
+  margin-top: 18px;
+  color: #5f6764;
+  line-height: 1.95;
+}
+
+.specs {
+  margin: 32px 0 34px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #eee9de;
+}
+
+.specs > div {
+  padding: 18px 22px;
+  border-bottom: 1px solid #eee9de;
+}
+
+.specs > div:nth-child(odd) {
+  border-inline-end: 1px solid #eee9de;
+}
+
+.specs > div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.specs dt {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #a17c45;
+}
+
+:host-context([dir='rtl']) .specs dt {
+  letter-spacing: normal;
+  font-size: 12px;
+}
+
+.specs dd {
+  margin: 6px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #222625;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.sub {
+  margin: 0 0 14px;
+  font-size: 20px;
+  color: #222625;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  padding: 8px 18px;
+  font-size: 13px;
+  color: #8a6a37;
+  background: rgba(176, 141, 87, 0.13);
+}
+
+.actions {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  color: #222625;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.call:hover {
+  color: #a17c45;
+}
+
+.related {
+  padding: 40px 0 100px;
+  background: #f5f3ee;
+  padding-top: 80px;
+}
+
+.head {
+  margin-bottom: 36px;
+}
+
+.missing {
+  padding: 140px 0;
+}
+
+.missing .btn-gold {
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gal {
+    position: static;
+  }
+
+  .details {
+    padding: 60px 0 50px;
+  }
+}

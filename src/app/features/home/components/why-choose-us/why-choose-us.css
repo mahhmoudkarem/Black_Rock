@@ -1,0 +1,89 @@
+:host {
+  display: block;
+}
+
+.why {
+  position: relative;
+  padding: 110px 0;
+  background:
+    linear-gradient(rgba(26, 30, 29, 0.94), rgba(26, 30, 29, 0.94)),
+    url('/images/about/marble-banner.jpg') center / cover;
+  background-color: #1a1e1d;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 28px 36px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.45s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: #b08d57;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(176, 141, 87, 0.08);
+  border-color: rgba(176, 141, 87, 0.5);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.big-num {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 18px;
+  font-family: var(--font-heading);
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.icon {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(176, 141, 87, 0.6);
+  color: #b08d57;
+  font-size: 24px;
+  transition: all 0.4s ease;
+}
+
+.card:hover .icon {
+  background: #b08d57;
+  color: #1c201f;
+}
+
+.c-title {
+  margin: 28px 0 12px;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.c-text {
+  color: #a9b0ad;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .why {
+    padding: 70px 0;
+  }
+}

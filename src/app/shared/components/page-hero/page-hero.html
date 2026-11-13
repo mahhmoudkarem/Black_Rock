@@ -1,0 +1,23 @@
+<section class="hero" [style.--bg]="'url(' + image() + ')'">
+  <div class="container mx-auto px-6 lg:px-12 inner">
+    <nav class="crumbs" [attr.aria-label]="lang.t('Breadcrumb', 'مسار التنقل')">
+      <a routerLink="/">{{ lang.t('Home', 'الرئيسية') }}</a>
+      @for (c of crumbs(); track c.label.en) {
+        <span class="sep">/</span>
+        @if (c.link) {
+          <a [routerLink]="c.link">{{ lang.l(c.label) }}</a>
+        } @else {
+          <span class="current">{{ lang.l(c.label) }}</span>
+        }
+      }
+    </nav>
+
+    <span class="eyebrow">{{ lang.l(eyebrow()) }}</span>
+    <h1 class="title">{{ lang.l(title()) }}</h1>
+
+    @if (subtitle(); as sub) {
+      <p class="sub">{{ lang.l(sub) }}</p>
+    }
+    <div class="rule"></div>
+  </div>
+</section>

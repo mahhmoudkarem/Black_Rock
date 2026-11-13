@@ -1,0 +1,51 @@
+<section class="gallery">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="head">
+      <div>
+        <span class="eyebrow">{{ lang.t('STONE IN MOTION', 'الحجر في حركة') }}</span>
+        <h2 class="sec-title on-dark mt-5">
+          {{ lang.t('A Closer Look At Our Stones', 'نظرة أقرب على أحجارنا') }}
+        </h2>
+      </div>
+
+      <a routerLink="/products" class="btn-ghost">
+        {{ lang.t('View All Products', 'عرض كل المنتجات') }}
+        <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="rows">
+    <!-- Row 1: moves one way -->
+    <div class="row">
+      <div class="track track-a" dir="ltr">
+        @for (g of loop; track g) {
+          <div class="group">
+            @for (item of rowA; track $index) {
+              <figure class="card">
+                <img [src]="item.src" [alt]="lang.l(item.name)" loading="lazy" draggable="false" />
+                <figcaption>{{ lang.l(item.name) }}</figcaption>
+              </figure>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Row 2: moves the other way -->
+    <div class="row">
+      <div class="track track-b" dir="ltr">
+        @for (g of loop; track g) {
+          <div class="group">
+            @for (item of rowB; track $index) {
+              <figure class="card">
+                <img [src]="item.src" [alt]="lang.l(item.name)" loading="lazy" draggable="false" />
+                <figcaption>{{ lang.l(item.name) }}</figcaption>
+              </figure>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

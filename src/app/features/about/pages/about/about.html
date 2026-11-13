@@ -1,0 +1,363 @@
+
+<div [attr.dir]="isArabic ? 'rtl' : 'ltr'">
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="about-hero-overlay"></div>
+
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+      <div class="max-w-3xl">
+
+        <span class="section-eyebrow">
+          {{ isArabic ? 'اكتشف بلاك روك' : 'DISCOVER BLACK ROCK' }}
+        </span>
+
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mt-5 mb-6">
+          {{ isArabic ? 'نصنع الجمال من' : 'Where Nature Meets' }}
+          <span class="text-[#B08D57]">
+            {{ isArabic ? 'جمال الطبيعة' : 'Timeless Elegance' }}
+          </span>
+        </h1>
+
+        <p class="text-gray-300 text-base md:text-lg leading-8 max-w-2xl mb-9">
+          {{
+            isArabic
+              ? 'في بلاك روك، نؤمن أن الحجر الطبيعي أكثر من مجرد خامة؛ إنه عنصر أساسي يصنع هوية المكان ويمنحه طابعًا مميزًا.'
+              : 'At Black Rock, we believe natural stone is more than just a material. It is an essential element that defines spaces and gives them a distinctive character.'
+          }}
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a routerLink="/products" class="primary-btn">
+            {{ isArabic ? 'اكتشف منتجاتنا' : 'Explore Our Products' }}
+            <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+          </a>
+
+          <a routerLink="/contact" class="outline-btn">
+            {{ isArabic ? 'تواصل معنا' : 'Contact Us' }}
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex items-center gap-3 text-sm">
+        <a routerLink="/">
+          {{ isArabic ? 'الرئيسية' : 'Home' }}
+        </a>
+
+        <span>/</span>
+
+        <span class="text-[#B08D57]">
+          {{ isArabic ? 'من نحن' : 'About Us' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- About Company -->
+  <section class="py-20 lg:py-28 bg-[#F5F3EE]">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+        <!-- Images -->
+        <div class="about-image-wrapper">
+
+          <div class="main-about-image">
+            <img
+              src="/images/about/about-main.jpg"
+              [alt]="isArabic ? 'رخام طبيعي' : 'Natural marble'"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="secondary-about-image">
+            <img
+              src="/images/about/about-detail.jpg"
+              [alt]="isArabic ? 'تفاصيل الرخام' : 'Marble details'"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="image-decoration"></div>
+
+        </div>
+
+        <!-- Content -->
+        <div>
+
+          <span class="section-eyebrow dark-eyebrow">
+            {{ isArabic ? 'من نحن' : 'WHO WE ARE' }}
+          </span>
+
+          <h2 class="section-title mt-5">
+            {{
+              isArabic
+                ? 'الرخام والجرانيت برؤية مختلفة'
+                : 'Natural Stone With A Different Vision'
+            }}
+          </h2>
+
+          <p class="text-gray-600 leading-8 mt-6">
+            {{
+              isArabic
+                ? 'بلاك روك هي علامة متخصصة في عالم الرخام والجرانيت، تهدف إلى تقديم خامات طبيعية تجمع بين الجمال والمتانة والتنوع، لتكون جزءًا من المساحات التي تعكس شخصية أصحابها.'
+                : 'Black Rock is a brand dedicated to the world of marble and granite, aiming to offer natural materials that combine beauty, durability, and variety to become part of spaces that reflect their owners’ personalities.'
+            }}
+          </p>
+
+          <p class="text-gray-600 leading-8 mt-4">
+            {{
+              isArabic
+                ? 'نهتم بتقديم اختيارات متنوعة من الخامات والألوان والتشطيبات، مع الاهتمام بمساعدة العملاء على الوصول إلى الاختيار المناسب لكل مشروع.'
+                : 'We focus on offering a variety of materials, colors, and finishes while helping customers find the right choice for every project.'
+            }}
+          </p>
+
+          <div class="mt-8 space-y-4">
+
+            <div class="flex items-center gap-3">
+              <span class="check-icon">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </span>
+              <span class="text-[#222625] font-medium">
+                {{ isArabic ? 'تنوع في الخامات والتصميمات' : 'Variety of materials and designs' }}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="check-icon">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </span>
+              <span class="text-[#222625] font-medium">
+                {{ isArabic ? 'اهتمام بالجودة والتفاصيل' : 'Attention to quality and details' }}
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="check-icon">
+                <fa-icon [icon]="faCheck"></fa-icon>
+              </span>
+              <span class="text-[#222625] font-medium">
+                {{ isArabic ? 'حلول تناسب مختلف المشروعات' : 'Solutions for different projects' }}
+              </span>
+            </div>
+
+          </div>
+
+          <a routerLink="/products" class="text-link mt-9 inline-flex items-center gap-3">
+            {{ isArabic ? 'تعرف على منتجاتنا' : 'Discover Our Collection' }}
+            <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Vision & Mission -->
+  <section class="py-20 lg:py-24 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="section-eyebrow dark-eyebrow">
+          {{ isArabic ? 'ما الذي نؤمن به' : 'WHAT WE BELIEVE IN' }}
+        </span>
+
+        <h2 class="section-title mt-5">
+          {{ isArabic ? 'رؤيتنا ورسالتنا' : 'Our Vision & Mission' }}
+        </h2>
+
+        <p class="text-gray-500 leading-8 mt-4">
+          {{
+            isArabic
+              ? 'نسعى إلى تقديم تجربة تجمع بين جمال الأحجار الطبيعية واحتياجات التصميم الحديث.'
+              : 'We aim to create an experience that brings together the beauty of natural stone and the needs of modern design.'
+          }}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+
+        <!-- Vision -->
+        <div class="vision-card">
+          <div class="feature-icon">
+            <fa-icon [icon]="faEye"></fa-icon>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-[#222625] mt-7 mb-4">
+            {{ isArabic ? 'رؤيتنا' : 'Our Vision' }}
+          </h3>
+
+          <p class="text-gray-600 leading-8">
+            {{
+              isArabic
+                ? 'أن نكون اختيارًا مميزًا لكل من يبحث عن الرخام والجرانيت الطبيعي، من خلال تقديم خامات تضيف قيمة وجمالًا لكل مساحة.'
+                : 'To be a distinctive choice for anyone looking for natural marble and granite by offering materials that add value and beauty to every space.'
+            }}
+          </p>
+        </div>
+
+        <!-- Mission -->
+        <div class="vision-card">
+          <div class="feature-icon">
+            <fa-icon [icon]="faBullseye"></fa-icon>
+          </div>
+
+          <h3 class="text-2xl font-semibold text-[#222625] mt-7 mb-4">
+            {{ isArabic ? 'رسالتنا' : 'Our Mission' }}
+          </h3>
+
+          <p class="text-gray-600 leading-8">
+            {{
+              isArabic
+                ? 'توفير مجموعة متنوعة من الأحجار الطبيعية، وتقديم معلومات واضحة وخدمة تساعد العملاء على اتخاذ قرارات مناسبة لمشروعاتهم.'
+                : 'To provide a diverse collection of natural stones, clear product information, and helpful service that supports customers in making the right decisions for their projects.'
+            }}
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Why Choose Us -->
+  <section class="py-20 lg:py-28 bg-[#F5F3EE]">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="section-eyebrow dark-eyebrow">
+          {{ isArabic ? 'لماذا بلاك روك؟' : 'WHY BLACK ROCK' }}
+        </span>
+
+        <h2 class="section-title mt-5">
+          {{
+            isArabic
+              ? 'ما الذي يميزنا؟'
+              : 'Why Choose Black Rock?'
+          }}
+        </h2>
+
+        <p class="text-gray-500 leading-8 mt-4">
+          {{
+            isArabic
+              ? 'نركز على التفاصيل التي تصنع الفرق، بداية من اختيار الخامة وحتى مساعدتك في تحديد الأنسب لمشروعك.'
+              : 'We focus on the details that make a difference, from material selection to helping you find the right fit for your project.'
+          }}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        @for (item of advantages; track item.title) {
+          <div class="advantage-card">
+
+            <div class="feature-icon">
+              <fa-icon [icon]="item.icon"></fa-icon>
+            </div>
+
+            <h3 class="text-lg font-semibold text-[#222625] mt-6 mb-3">
+              {{ item.title }}
+            </h3>
+
+            <p class="text-gray-500 text-sm leading-7">
+              {{ item.description }}
+            </p>
+
+          </div>
+        }
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Natural Stone Section -->
+  <section class="stone-section">
+    <div class="stone-overlay"></div>
+
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+      <div class="max-w-2xl">
+
+        <span class="section-eyebrow">
+          {{ isArabic ? 'جمال يدوم' : 'BEAUTY THAT LASTS' }}
+        </span>
+
+        <h2 class="text-3xl md:text-5xl text-white font-bold leading-tight mt-5 mb-6">
+          {{
+            isArabic
+              ? 'كل قطعة حجر لها حكاية'
+              : 'Every Stone Tells A Story'
+          }}
+        </h2>
+
+        <p class="text-gray-300 leading-8 mb-8">
+          {{
+            isArabic
+              ? 'اكتشف تنوع الألوان والعروق والتفاصيل الطبيعية التي تجعل كل قطعة من الرخام والجرانيت مميزة بطريقتها الخاصة.'
+              : 'Discover the variety of colors, veins, and natural details that make every piece of marble and granite unique in its own way.'
+          }}
+        </p>
+
+        <a routerLink="/products" class="primary-btn">
+          {{ isArabic ? 'استكشف المجموعة' : 'Explore The Collection' }}
+          <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="cta-box">
+
+        <div class="max-w-2xl">
+          <span class="section-eyebrow">
+            {{ isArabic ? 'ابدأ مشروعك معنا' : 'LET’S START YOUR PROJECT' }}
+          </span>
+
+          <h2 class="text-3xl md:text-4xl text-white font-bold mt-5 mb-5">
+            {{
+              isArabic
+                ? 'هل تبحث عن الخامة المثالية لمشروعك؟'
+                : 'Looking For The Perfect Material For Your Project?'
+            }}
+          </h2>
+
+          <p class="text-gray-300 leading-8">
+            {{
+              isArabic
+                ? 'تواصل معنا واكتشف الخيارات المتاحة من الرخام والجرانيت.'
+                : 'Get in touch with us and explore our available marble and granite options.'
+            }}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          (click)="openWhatsApp()"
+          class="primary-btn whitespace-nowrap"
+        >
+          {{ isArabic ? 'تواصل عبر واتساب' : 'Contact Us On WhatsApp' }}
+          <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+</div>

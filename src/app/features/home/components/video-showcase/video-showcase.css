@@ -1,0 +1,138 @@
+:host {
+  display: block;
+}
+
+.videos {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.text {
+  margin-top: 22px;
+  color: #5f6764;
+  line-height: 1.95;
+}
+
+.line {
+  margin-top: 34px;
+  width: 80px;
+  height: 3px;
+  background: #b08d57;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.vcard {
+  margin: 0;
+  position: relative;
+}
+
+.vcard:nth-child(2) {
+  margin-top: 48px;
+}
+
+.poster,
+video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  overflow: hidden;
+  background: #111;
+  object-fit: cover;
+}
+
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.poster:hover img {
+  transform: scale(1.07);
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(10, 12, 11, 0.55), rgba(10, 12, 11, 0.1));
+}
+
+.play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78px;
+  height: 78px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #b08d57;
+  color: #1c201f;
+  font-size: 24px;
+  padding-inline-start: 4px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: pulse 2.2s ease-out infinite;
+}
+
+.poster:hover .play {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 26px rgba(176, 141, 87, 0);
+  }
+}
+
+figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 16px 4px 0;
+  border-bottom: 2px solid #e9e5dc;
+  padding-bottom: 14px;
+}
+
+figcaption strong {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: #222625;
+}
+
+figcaption span {
+  font-size: 12px;
+  color: #a17c45;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .videos {
+    padding: 70px 0;
+  }
+
+  .cards {
+    gap: 14px;
+  }
+
+  .vcard:nth-child(2) {
+    margin-top: 28px;
+  }
+
+  .play {
+    width: 58px;
+    height: 58px;
+    font-size: 18px;
+  }
+}

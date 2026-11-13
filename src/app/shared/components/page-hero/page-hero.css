@@ -1,0 +1,92 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  padding: 90px 0 80px;
+  background:
+    linear-gradient(90deg, rgba(14, 17, 16, 0.94), rgba(14, 17, 16, 0.62)),
+    var(--bg) center / cover no-repeat;
+  background-color: #141817;
+  overflow: hidden;
+}
+
+:host-context([dir='rtl']) .hero {
+  background:
+    linear-gradient(270deg, rgba(14, 17, 16, 0.94), rgba(14, 17, 16, 0.62)),
+    var(--bg) center / cover no-repeat;
+}
+
+.inner > * {
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.inner > :nth-child(1) { animation-delay: 0.05s; }
+.inner > :nth-child(2) { animation-delay: 0.15s; }
+.inner > :nth-child(3) { animation-delay: 0.28s; }
+.inner > :nth-child(4) { animation-delay: 0.4s; }
+.inner > :nth-child(5) { animation-delay: 0.5s; }
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 34px;
+  font-size: 13px;
+  color: #aab1ae;
+}
+
+.crumbs a {
+  color: #d4d4d4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.crumbs a:hover {
+  color: #b08d57;
+}
+
+.sep {
+  color: #b08d57;
+}
+
+.current {
+  color: #b08d57;
+}
+
+.title {
+  margin: 18px 0 0;
+  max-width: 760px;
+  color: #fff;
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+:host-context([dir='rtl']) .title {
+  line-height: 1.4;
+}
+
+.sub {
+  margin-top: 20px;
+  max-width: 640px;
+  color: #c8cecb;
+  line-height: 1.95;
+  font-size: clamp(15px, 1.5vw, 17px);
+}
+
+.rule {
+  margin-top: 30px;
+  width: 90px;
+  height: 3px;
+  background: #b08d57;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 60px 0 56px;
+  }
+}

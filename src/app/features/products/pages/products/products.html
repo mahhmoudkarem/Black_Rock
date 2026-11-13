@@ -1,0 +1,90 @@
+<app-page-hero
+  [eyebrow]="hero().eyebrow"
+  [title]="hero().title"
+  [subtitle]="hero().subtitle"
+  [image]="hero().image"
+  [crumbs]="[
+    { label: { en: 'Products', ar: 'المنتجات' } },
+    { label: hero().crumb }
+  ]"
+/>
+
+<!-- Spotlight carousel -->
+@if (slides().length) {
+  <section class="spotlight">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div appReveal class="head">
+        <span class="eyebrow on-light">{{ lang.t('FEATURED STONES', 'أنواع مميزة') }}</span>
+        <h2 class="sec-title mt-4">{{ lang.t('Our Signature Stones', 'أحجارنا المميزة') }}</h2>
+      </div>
+
+      <div appReveal [revealDelay]="120">
+        <app-spotlight-carousel [slides]="slides()" />
+      </div>
+    </div>
+  </section>
+}
+
+<!-- Catalogue -->
+<section class="catalogue" id="catalogue">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div appReveal class="head">
+      <span class="eyebrow on-light">{{ lang.t('THE CATALOGUE', 'الكتالوج') }}</span>
+      <h2 class="sec-title mt-4">
+        {{ isGranite() ? lang.t('Granite Collection', 'مجموعة الجرانيت') : lang.t('Marble Collection', 'مجموعة الرخام') }}
+      </h2>
+    </div>
+
+    <div appReveal [revealDelay]="100" class="filter-wrap">
+      <app-products-filter
+        [showFinish]="!isGranite()"
+        [(finish)]="finish"
+        [(tone)]="tone"
+        [availableTones]="tones()"
+        [total]="filtered().length"
+      />
+    </div>
+
+    <app-products-grid [products]="filtered()" [helpTile]="true" />
+  </div>
+</section>
+
+<!-- Finishes (marble) / Why granite -->
+<section class="finishes">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div appReveal class="text-center max-w-2xl mx-auto mb-14">
+      <span class="eyebrow">{{ lang.l(infoHead().eyebrow) }}</span>
+      <h2 class="sec-title on-dark mt-4">{{ lang.l(infoHead().title) }}</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      @for (f of info(); track f.title.en; let i = $index) {
+        <div appReveal [revealDelay]="i * 110">
+          <div class="finish-card">
+            <span class="n">0{{ i + 1 }}</span>
+            <h3>{{ lang.l(f.title) }}</h3>
+            <p>{{ lang.l(f.text) }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Link to the other category -->
+<section class="other">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div appReveal class="other-box">
+      <div>
+        <span class="eyebrow on-light">{{ lang.l(otherLink().eyebrow) }}</span>
+        <h2 class="sec-title mt-3">{{ lang.l(otherLink().title) }}</h2>
+      </div>
+      <a [routerLink]="otherLink().link" class="btn-gold">
+        {{ lang.l(otherLink().button) }}
+        <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-cta-section />

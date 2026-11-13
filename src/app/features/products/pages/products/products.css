@@ -1,0 +1,110 @@
+:host {
+  display: block;
+}
+
+.spotlight {
+  padding: 90px 0 40px;
+  background: #f5f3ee;
+}
+
+.catalogue {
+  padding: 60px 0 110px;
+  background: #f5f3ee;
+}
+
+.head {
+  margin-bottom: 36px;
+}
+
+.filter-wrap {
+  margin-bottom: 40px;
+}
+
+.finishes {
+  padding: 100px 0;
+  background:
+    linear-gradient(rgba(26, 30, 29, 0.95), rgba(26, 30, 29, 0.95)),
+    url('/images/about/marble-banner.jpg') center / cover;
+  background-color: #1a1e1d;
+}
+
+.finish-card {
+  position: relative;
+  height: 100%;
+  padding: 38px 30px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: all 0.4s ease;
+}
+
+.finish-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(176, 141, 87, 0.6);
+  background: rgba(176, 141, 87, 0.08);
+}
+
+.n {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(176, 141, 87, 0.55);
+}
+
+.finish-card h3 {
+  margin: 20px 0 12px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.finish-card p {
+  color: #a9b0ad;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .spotlight {
+    padding: 60px 0 30px;
+  }
+
+  .catalogue {
+    padding: 40px 0 70px;
+  }
+
+  .finishes {
+    padding: 70px 0;
+  }
+
+
+}
+
+/* ---------- Link to the other category ---------- */
+.other {
+  padding: 70px 0;
+  background: #f5f3ee;
+}
+
+.other-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 38px 44px;
+  background: #fff;
+  border: 1px solid #e9e5dc;
+  border-inline-start: 4px solid #b08d57;
+  box-shadow: 0 10px 30px rgba(34, 38, 37, 0.05);
+}
+
+@media (max-width: 640px) {
+  .other {
+    padding: 50px 0;
+  }
+
+  .other-box {
+    padding: 28px 22px;
+  }
+}
