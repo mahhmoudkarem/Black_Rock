@@ -1,0 +1,56 @@
+<section class="about-preview">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <!-- Images -->
+      <div class="images">
+        <div class="img-main">
+          <img src="/images/about/about-main.jpg" [alt]="lang.t('Marble slabs', 'ألواح رخام')" loading="lazy" />
+        </div>
+
+        <div class="img-small">
+          <img src="/images/about/about-detail.jpg" [alt]="lang.t('Marble detail', 'تفاصيل الرخام')" loading="lazy" />
+        </div>
+
+        <div class="badge">
+          <img src="/favicon-192.png" alt="Black Rock" loading="lazy" />
+        </div>
+
+        <div class="frame"></div>
+      </div>
+
+      <!-- Text -->
+      <div class="text">
+        <span class="eyebrow on-light">{{ lang.t('ABOUT BLACK ROCK', 'عن بلاك روك') }}</span>
+
+        <h2 class="sec-title mt-5">
+          {{ lang.t('Natural Stone With A Different Vision', 'الرخام والجرانيت برؤية مختلفة') }}
+        </h2>
+
+        <p class="para">
+          {{
+            lang.t(
+              'Black Rock is dedicated to the world of marble and granite. We offer natural materials that combine beauty, durability and variety, to become part of spaces that reflect their owners’ personality.',
+              'بلاك روك متخصصة في عالم الرخام والجرانيت. نقدم خامات طبيعية تجمع بين الجمال والمتانة والتنوع لتكون جزءًا من مساحات تعكس شخصية أصحابها.'
+            )
+          }}
+        </p>
+
+        <ul class="points">
+          @for (p of points; track p.en) {
+            <li>
+              <span class="tick"><fa-icon [icon]="faCheck"></fa-icon></span>
+              {{ lang.l(p) }}
+            </li>
+          }
+        </ul>
+
+        <a routerLink="/about" class="more-link">
+          {{ lang.t('Learn More About Us', 'تعرف علينا أكثر') }}
+          <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

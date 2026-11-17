@@ -1,0 +1,82 @@
+<div
+  class="spot"
+  (mouseenter)="paused.set(true)"
+  (mouseleave)="paused.set(false)"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+  role="region"
+  aria-roledescription="carousel"
+>
+  <!-- Images -->
+  <div class="media" aria-hidden="true">
+    @for (s of slides(); track s.image + $index; let i = $index) {
+      <img
+        [src]="s.image"
+        alt=""
+        class="pic"
+        [class.on]="i === current()"
+        [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+      />
+    }
+    <div class="shade"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="panel">
+    @for (s of slides(); track s.image + $index; let i = $index) {
+      @if (i === current()) {
+        <div class="content">
+          <span class="badge">{{ lang.l(s.badge) }}</span>
+          <h3 class="title">{{ lang.l(s.title) }}</h3>
+          <p class="text">{{ lang.l(s.text) }}</p>
+
+          @if (s.meta?.length) {
+            <ul class="meta">
+              @for (m of s.meta; track m.en) {
+                <li>{{ lang.l(m) }}</li>
+              }
+            </ul>
+          }
+
+          @if (s.link && s.linkLabel) {
+            <a [routerLink]="s.link" class="btn-gold">
+              {{ lang.l(s.linkLabel) }}
+              <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+            </a>
+          }
+        </div>
+      }
+    }
+
+    <!-- Controls -->
+    <div class="controls">
+      <div class="dots">
+        @for (s of slides(); track s.image + $index; let i = $index) {
+          <button
+            type="button"
+            class="dot"
+            [class.on]="i === current()"
+            [class.paused]="paused()"
+            (click)="goTo(i)"
+            [attr.aria-label]="(i + 1).toString()"
+          >
+            <span class="fill" [style.animation-duration.ms]="slideMs"></span>
+          </button>
+        }
+      </div>
+
+      <div class="count" dir="ltr">
+        <strong>{{ pad(current() + 1) }}</strong> / {{ pad(slides().length) }}
+      </div>
+
+      <div class="arrows">
+        <button type="button" class="arrow" (click)="prev()" [attr.aria-label]="lang.t('Previous', 'السابق')">
+          <fa-icon [icon]="faPrev" class="rtl-flip"></fa-icon>
+        </button>
+        <button type="button" class="arrow" (click)="next()" [attr.aria-label]="lang.t('Next', 'التالي')">
+          <fa-icon [icon]="faNext" class="rtl-flip"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

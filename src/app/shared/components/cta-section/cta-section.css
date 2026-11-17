@@ -1,0 +1,60 @@
+:host {
+  display: block;
+}
+
+.cta {
+  padding: 120px 0;
+  background:
+    linear-gradient(rgba(20, 24, 23, 0.82), rgba(20, 24, 23, 0.9)),
+    url('/images/contact/contact-cta.jpg') center / cover;
+  background-color: #1a1e1d;
+}
+
+.cta-text {
+  max-width: 620px;
+  margin: 0 auto 42px;
+  color: #c4c9c7;
+  line-height: 1.95;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.social {
+  margin-top: 38px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.social a {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(176, 141, 87, 0.5);
+  border-radius: 50%;
+  color: #b08d57;
+  transition: all 0.3s ease;
+}
+
+.social a:hover {
+  background: #b08d57;
+  color: #1c201f;
+  transform: translateY(-4px);
+}
+
+@media (max-width: 640px) {
+  .cta {
+    padding: 80px 0;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
+  }
+}

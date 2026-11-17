@@ -1,0 +1,73 @@
+@if (products().length) {
+  <div class="grid">
+    @for (p of products(); track p.id; let i = $index) {
+      <div appReveal [revealDelay]="(i % 3) * 90">
+        <article class="card">
+          <a [routerLink]="['/products', p.slug]" class="photo" [attr.aria-label]="lang.l(p.name)">
+            <img [src]="p.cover" [alt]="lang.l(p.name)" loading="lazy" />
+            <span class="finish">
+              {{ p.category === 'granite' ? lang.t('Granite', 'جرانيت') : lang.l(p.finish) }}
+            </span>
+            @if (p.video) {
+              <span class="vid"><fa-icon [icon]="faPlay"></fa-icon></span>
+            }
+            <span class="shade"></span>
+            <span class="view">
+              {{ lang.t('View Details', 'عرض التفاصيل') }}
+              <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+            </span>
+          </a>
+
+          <div class="body">
+            <h3 class="name">
+              <a [routerLink]="['/products', p.slug]">{{ lang.l(p.name) }}</a>
+            </h3>
+
+            <div class="color">
+              <span class="dot" [style.background]="p.swatch"></span>
+              {{ lang.l(p.color) }}
+            </div>
+
+            <p class="desc">{{ lang.l(p.description) }}</p>
+
+            <div class="foot">
+              <span class="count">
+                {{ p.images.length }}
+                {{ p.images.length === 1 ? lang.t('photo', 'صورة') : lang.t('photos', 'صور') }}
+              </span>
+              <button type="button" class="ask" (click)="inquire(p)">
+                <fa-icon [icon]="faWhatsapp"></fa-icon>
+                {{ lang.t('Inquire', 'استفسر') }}
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    }
+
+    @if (helpTile()) {
+      <div appReveal [revealDelay]="120">
+        <div class="help">
+          <fa-icon [icon]="faWhatsapp" class="help-icon"></fa-icon>
+          <h3>{{ lang.t('Can’t find your stone?', 'لم تجد النوع المطلوب؟') }}</h3>
+          <p>
+            {{
+              lang.t(
+                'Send us a photo or tell us what you need and we will help you find it.',
+                'أرسل لنا صورة أو أخبرنا بما تحتاجه وسنساعدك في العثور عليه.'
+              )
+            }}
+          </p>
+          <button type="button" class="btn-gold" (click)="askGeneral()">
+            {{ lang.t('Chat With Us', 'تحدث معنا') }}
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="empty">
+    <h3>{{ lang.t('No stones match your filters', 'لا توجد أنواع تطابق اختيارك') }}</h3>
+    <p>{{ lang.t('Try another finish or color.', 'جرّب تشطيبًا أو لونًا آخر.') }}</p>
+  </div>
+}

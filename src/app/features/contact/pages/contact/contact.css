@@ -1,0 +1,429 @@
+
+:host {
+  display: block;
+}
+
+/* =========================
+   Shared Styles
+========================= */
+
+.section-eyebrow {
+  display: inline-block;
+  color: #B08D57;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+[dir='rtl'] .section-eyebrow {
+  letter-spacing: 0;
+}
+
+.dark-eyebrow {
+  color: #A17C45;
+}
+
+.section-title {
+  color: #222625;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 25px;
+  background: #B08D57;
+  color: #222625;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #222625;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+
+/* =========================
+   Hero
+========================= */
+
+.contact-hero {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  padding: 90px 0;
+  background-image: url('/images/contact/contact-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #222625;
+}
+
+.contact-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(20, 24, 23, 0.94),
+    rgba(20, 24, 23, 0.55)
+  );
+}
+
+[dir='rtl'] .contact-hero-overlay {
+  background: linear-gradient(
+    270deg,
+    rgba(20, 24, 23, 0.94),
+    rgba(20, 24, 23, 0.55)
+  );
+}
+
+
+/* =========================
+   Breadcrumb
+========================= */
+
+.breadcrumb-section {
+  background: #ffffff;
+  padding: 18px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.breadcrumb-section a {
+  color: #777777;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-section a:hover {
+  color: #B08D57;
+}
+
+.breadcrumb-section .current-page {
+  color: #B08D57;
+}
+
+
+/* =========================
+   Contact Info Cards
+========================= */
+
+.contact-info-card {
+  background: #ffffff;
+  padding: 35px 22px;
+  text-align: center;
+  border: 1px solid #e9e5dc;
+  transition: all 0.35s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-7px);
+  border-color: #B08D57;
+  box-shadow: 0 15px 35px rgba(34, 38, 37, 0.07);
+}
+
+.contact-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(176, 141, 87, 0.13);
+  color: #A17C45;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover .contact-icon {
+  background: #B08D57;
+  color: #ffffff;
+}
+
+.contact-info-value {
+  color: #777777;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a.contact-info-value:hover {
+  color: #A17C45;
+}
+
+
+/* =========================
+   Contact Form
+========================= */
+
+.contact-form-wrapper {
+  padding: 40px;
+  background: #F5F3EE;
+  border: 1px solid #e9e5dc;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  color: #222625;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group label span {
+  color: #B08D57;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid #e3dfd6;
+  outline: none;
+  color: #222625;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.form-group input,
+.form-group select {
+  min-height: 49px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #a3a3a3;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #B08D57;
+  box-shadow: 0 0 0 3px rgba(176, 141, 87, 0.1);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 22px;
+  background: #B08D57;
+  color: #222625;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #222625;
+  color: #ffffff;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   WhatsApp Box
+========================= */
+
+.whatsapp-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 25px;
+  background: #F5F3EE;
+  border-inline-start: 3px solid #B08D57;
+}
+
+.whatsapp-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #B08D57;
+  color: #222625;
+  font-size: 23px;
+  border-radius: 50%;
+}
+
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #A17C45;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-link:hover {
+  color: #222625;
+}
+
+
+/* =========================
+   Map Placeholder
+========================= */
+
+.map-placeholder {
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(25, 30, 28, 0.83), rgba(25, 30, 28, 0.9)),
+    url('/images/contact/contact-map.jpg') center / cover,
+    #222625;
+}
+
+.map-content {
+  max-width: 350px;
+}
+
+.map-pin {
+  width: 65px;
+  height: 65px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #B08D57;
+  color: #222625;
+  font-size: 26px;
+  border-radius: 50%;
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #B08D57;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.map-link:hover {
+  color: #ffffff;
+}
+
+
+/* =========================
+   Final CTA
+========================= */
+
+.contact-cta {
+  padding: 90px 0;
+  background:
+    linear-gradient(
+      rgba(24, 29, 27, 0.93),
+      rgba(24, 29, 27, 0.93)
+    ),
+    url('/images/contact/contact-cta.jpg') center / cover;
+  background-color: #222625;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .contact-hero {
+    min-height: 350px;
+    padding: 70px 0;
+  }
+
+  .contact-form-wrapper {
+    padding: 28px 20px;
+  }
+
+  .whatsapp-box {
+    padding: 20px;
+  }
+
+  .map-placeholder {
+    min-height: 300px;
+  }
+
+  .contact-cta {
+    padding: 70px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info-card {
+    padding: 28px 18px;
+  }
+
+  .whatsapp-box {
+    flex-direction: column;
+  }
+}
+
+/* Social accounts */
+.social-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.social-label {
+  margin-inline-end: 6px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 700;
+  color: #222625;
+}
+
+.social-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b08d57;
+  border-radius: 50%;
+  color: #a17c45;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background: #b08d57;
+  color: #fff;
+  transform: translateY(-3px);
+}

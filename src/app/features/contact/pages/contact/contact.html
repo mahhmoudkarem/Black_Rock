@@ -1,0 +1,458 @@
+
+<div [attr.dir]="isArabic ? 'rtl' : 'ltr'">
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="contact-hero-overlay"></div>
+
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+      <div class="max-w-2xl">
+
+        <span class="section-eyebrow">
+          {{ isArabic ? 'نحن هنا لمساعدتك' : 'WE ARE HERE TO HELP' }}
+        </span>
+
+        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mt-5 mb-6">
+          {{ isArabic ? 'تواصل' : 'Get In' }}
+          <span class="text-[#B08D57]">
+            {{ isArabic ? 'معنا' : 'Touch' }}
+          </span>
+        </h1>
+
+        <p class="text-gray-300 leading-8 text-base md:text-lg max-w-xl">
+          {{
+            isArabic
+              ? 'يسعدنا التواصل معك والإجابة عن جميع استفساراتك. أخبرنا عن احتياجات مشروعك ودعنا نساعدك في اختيار الخامة المناسبة.'
+              : 'We would love to hear from you and answer your questions. Tell us about your project and let us help you find the right materials.'
+          }}
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Breadcrumb -->
+  <section class="breadcrumb-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex items-center gap-3 text-sm">
+        <a routerLink="/">
+          {{ isArabic ? 'الرئيسية' : 'Home' }}
+        </a>
+
+        <span>/</span>
+
+        <span class="current-page">
+          {{ isArabic ? 'تواصل معنا' : 'Contact Us' }}
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Information -->
+  <section class="py-20 bg-[#F5F3EE]">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="text-center max-w-2xl mx-auto mb-14">
+
+        <span class="section-eyebrow dark-eyebrow">
+          {{ isArabic ? 'ابقَ على تواصل' : 'GET IN TOUCH' }}
+        </span>
+
+        <h2 class="section-title mt-5">
+          {{
+            isArabic
+              ? 'يسعدنا سماعك'
+              : 'We Would Love To Hear From You'
+          }}
+        </h2>
+
+        <p class="text-gray-500 leading-8 mt-4">
+          {{
+            isArabic
+              ? 'اختر الطريقة المناسبة للتواصل معنا، وفريقنا مستعد لمساعدتك.'
+              : 'Choose your preferred way to contact us. Our team is ready to assist you.'
+          }}
+        </p>
+
+      </div>
+
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        @for (item of contactInfo; track item.title) {
+          <div class="contact-info-card">
+
+            <div class="contact-icon">
+              <fa-icon [icon]="item.icon"></fa-icon>
+            </div>
+
+            <h3 class="text-lg font-semibold text-[#222625] mt-5 mb-3">
+              {{ item.title }}
+            </h3>
+
+            @if (item.link) {
+              <a
+                [href]="item.link"
+                [target]="item.link.startsWith('https') ? '_blank' : null"
+                [rel]="item.link.startsWith('https') ? 'noopener noreferrer' : null"
+                class="contact-info-value"
+                [attr.dir]="item.ltr ? 'ltr' : null"
+              >
+                {{ item.value }}
+              </a>
+            } @else {
+              <p class="contact-info-value">
+                {{ item.value }}
+              </p>
+            }
+
+          </div>
+        }
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Contact Form Section -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+
+        <!-- Form Information -->
+        <div class="pt-4">
+
+          <span class="section-eyebrow dark-eyebrow">
+            {{ isArabic ? 'أرسل لنا رسالة' : 'SEND US A MESSAGE' }}
+          </span>
+
+          <h2 class="section-title mt-5">
+            {{
+              isArabic
+                ? 'دعنا نتحدث عن مشروعك القادم'
+                : 'Let’s Talk About Your Next Project'
+            }}
+          </h2>
+
+          <p class="text-gray-500 leading-8 mt-6">
+            {{
+              isArabic
+                ? 'سواء كنت تبحث عن الرخام أو الجرانيت أو تحتاج إلى مساعدة في اختيار الخامات، املأ النموذج وسنساعدك في الوصول إلى الاختيار المناسب.'
+                : 'Whether you are looking for marble, granite, or need help choosing materials, fill out the form and we will help you find the right solution.'
+            }}
+          </p>
+
+          <!-- WhatsApp Box -->
+          <div class="whatsapp-box mt-10">
+
+            <div class="whatsapp-icon">
+              <fa-icon [icon]="faWhatsapp"></fa-icon>
+            </div>
+
+            <div class="flex-1">
+              <h3 class="text-[#222625] font-semibold mb-2">
+                {{ isArabic ? 'تفضل التواصل المباشر؟' : 'Prefer Direct Communication?' }}
+              </h3>
+
+              <p class="text-gray-500 text-sm leading-7">
+                {{
+                  isArabic
+                    ? 'تواصل معنا مباشرة عبر واتساب وسنكون سعداء بمساعدتك.'
+                    : 'Contact us directly through WhatsApp. We will be happy to help.'
+                }}
+              </p>
+
+              <button
+                type="button"
+                (click)="openWhatsApp()"
+                class="whatsapp-link mt-4"
+              >
+                {{ isArabic ? 'تحدث معنا عبر واتساب' : 'Chat With Us On WhatsApp' }}
+                <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Social accounts -->
+          <div class="social-row mt-8">
+            <span class="social-label">{{ isArabic ? 'تابعنا على' : 'Follow us' }}</span>
+            @for (s of socials; track s.name) {
+              <a
+                [href]="s.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-btn"
+                [attr.aria-label]="s.name"
+              >
+                <fa-icon [icon]="s.icon"></fa-icon>
+              </a>
+            }
+          </div>
+
+        </div>
+
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+
+          <h3 class="text-2xl font-bold text-[#222625] mb-2">
+            {{ isArabic ? 'أرسل استفسارك' : 'Send Your Inquiry' }}
+          </h3>
+
+          <p class="text-gray-500 text-sm mb-8">
+            {{
+              isArabic
+                ? 'املأ البيانات التالية وسيتم فتح واتساب لإرسال رسالتك.'
+                : 'Fill in the details below and WhatsApp will open with your message.'
+            }}
+          </p>
+
+
+          <form
+            (ngSubmit)="submitForm()"
+            #contactForm="ngForm"
+            class="space-y-5"
+          >
+
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name">
+                {{ isArabic ? 'الاسم بالكامل' : 'Full Name' }}
+                <span>*</span>
+              </label>
+
+              <input
+                id="name"
+                type="text"
+                name="name"
+                [(ngModel)]="formData.name"
+                required
+                minlength="2"
+                [placeholder]="isArabic ? 'اكتب اسمك' : 'Enter your name'"
+              />
+            </div>
+
+
+            <!-- Email & Phone -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+              <div class="form-group">
+                <label for="email">
+                  {{ isArabic ? 'البريد الإلكتروني' : 'Email Address' }}
+                  <span>*</span>
+                </label>
+
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  [(ngModel)]="formData.email"
+                  required
+                  email
+                  placeholder="example@email.com"
+                  dir="ltr"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">
+                  {{ isArabic ? 'رقم الهاتف' : 'Phone Number' }}
+                  <span>*</span>
+                </label>
+
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  [(ngModel)]="formData.phone"
+                  required
+                  placeholder="+20 109 316 9042"
+                  dir="ltr"
+                />
+              </div>
+
+            </div>
+
+
+            <!-- Subject -->
+            <div class="form-group">
+              <label for="subject">
+                {{ isArabic ? 'موضوع الاستفسار' : 'Subject' }}
+                <span>*</span>
+              </label>
+
+              <select
+                id="subject"
+                name="subject"
+                [(ngModel)]="formData.subject"
+                required
+              >
+                <option value="" disabled>
+                  {{ isArabic ? 'اختر موضوع الاستفسار' : 'Select a subject' }}
+                </option>
+
+                @for (subject of subjects; track subject.key) {
+                  <option [value]="subject.key">
+                    {{ isArabic ? subject.ar : subject.en }}
+                  </option>
+                }
+              </select>
+            </div>
+
+
+            <!-- Message -->
+            <div class="form-group">
+              <label for="message">
+                {{ isArabic ? 'رسالتك' : 'Your Message' }}
+                <span>*</span>
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                [(ngModel)]="formData.message"
+                required
+                minlength="5"
+                rows="5"
+                [placeholder]="isArabic ? 'اكتب تفاصيل استفسارك هنا...' : 'Write your message here...'"
+              ></textarea>
+            </div>
+
+
+            <!-- Submit -->
+            <button
+              type="submit"
+              [disabled]="contactForm.invalid"
+              class="submit-btn w-full"
+            >
+              {{ isArabic ? 'إرسال عبر واتساب' : 'Send Via WhatsApp' }}
+
+              <fa-icon [icon]="faWhatsapp"></fa-icon>
+            </button>
+
+            <p class="text-xs text-gray-400 text-center leading-6">
+              {{
+                isArabic
+                  ? 'سيتم فتح تطبيق واتساب لإرسال بياناتك. لن يتم تخزين البيانات على الموقع.'
+                  : 'WhatsApp will open to send your details. Your information is not stored on this website.'
+              }}
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Location Section -->
+  <section class="py-20 bg-[#F5F3EE]">
+    <div class="container mx-auto px-6 lg:px-12">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+        <div>
+          <span class="section-eyebrow dark-eyebrow">
+            {{ isArabic ? 'موقعنا' : 'FIND US' }}
+          </span>
+
+          <h2 class="section-title mt-5">
+            {{ isArabic ? 'نحن في القاهرة، مصر' : 'We Are In Cairo, Egypt' }}
+          </h2>
+
+          <p class="text-gray-500 leading-8 mt-5">
+            {{
+              isArabic
+                ? 'يسعدنا استقبال استفساراتك والتواصل معك. سيتم تحديث عنوان الشركة وموقعها الدقيق بمجرد استلام البيانات من العميل.'
+                : 'We are happy to receive your inquiries. Our company address and exact location will be updated once the details are confirmed.'
+            }}
+          </p>
+
+          <a
+            [href]="mapsUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="primary-btn mt-8"
+          >
+            {{ isArabic ? 'عرض الموقع على الخريطة' : 'View On Google Maps' }}
+            <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+          </a>
+        </div>
+
+        <div class="map-placeholder">
+          <div class="map-content">
+            <div class="map-pin">
+              <fa-icon [icon]="faLocationDot"></fa-icon>
+            </div>
+
+            <h3 class="text-xl font-semibold text-white mt-5">
+              BLACK ROCK
+            </h3>
+
+            <p class="text-gray-300 text-sm mt-2">
+              {{ isArabic ? 'القاهرة، مصر' : 'Cairo, Egypt' }}
+            </p>
+
+            <a
+              [href]="mapsUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="map-link mt-6"
+            >
+              {{ isArabic ? 'افتح خرائط جوجل' : 'Open Google Maps' }}
+              <fa-icon [icon]="faArrowRight" class="rtl-flip"></fa-icon>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Final CTA -->
+  <section class="contact-cta">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+
+      <span class="section-eyebrow">
+        {{ isArabic ? 'نحن في انتظارك' : 'WE ARE READY TO HELP' }}
+      </span>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-white mt-5 mb-5">
+        {{
+          isArabic
+            ? 'دعنا نساعدك في اختيار الأفضل'
+            : 'Let Us Help You Choose The Best'
+        }}
+      </h2>
+
+      <p class="text-gray-300 leading-8 max-w-2xl mx-auto mb-9">
+        {{
+          isArabic
+            ? 'تواصل مع Black Rock واكتشف مجموعة متنوعة من الرخام والجرانيت لمشروعك.'
+            : 'Contact Black Rock and discover a wide collection of marble and granite for your next project.'
+        }}
+      </p>
+
+      <button
+        type="button"
+        (click)="openWhatsApp()"
+        class="primary-btn"
+      >
+        {{ isArabic ? 'تواصل معنا الآن' : 'Contact Us Now' }}
+        <fa-icon [icon]="faWhatsapp"></fa-icon>
+      </button>
+
+    </div>
+  </section>
+
+</div>

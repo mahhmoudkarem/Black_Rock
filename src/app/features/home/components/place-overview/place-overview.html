@@ -1,0 +1,55 @@
+<section class="overview">
+  <div class="container mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="text">
+        <span class="eyebrow on-light">{{ lang.t('A LOOK INSIDE', 'نظرة من الداخل') }}</span>
+
+        <h2 class="sec-title mt-5">
+          {{ lang.t('Inside Black Rock', 'داخل بلاك روك') }}
+        </h2>
+
+        <p class="para">
+          {{
+            lang.t(
+              'Take a quick tour of the place where our stone is cut, finished and prepared. Watch the machines at work and see how every slab is handled with care.',
+              'جولة سريعة داخل المكان الذي يُقطع فيه حجرنا ويُجهّز. شاهد الماكينات أثناء العمل وكيف يتم التعامل مع كل لوح بعناية.'
+            )
+          }}
+        </p>
+
+        <ul class="points">
+          @for (p of points; track p.en) {
+            <li>
+              <span class="tick"><fa-icon [icon]="faCheck"></fa-icon></span>
+              {{ lang.l(p) }}
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="player-wrap">
+        <div class="corner"></div>
+
+        <div class="player">
+          @if (playing()) {
+            <video [src]="video" [poster]="poster" controls autoplay playsinline></video>
+          } @else {
+            <button
+              type="button"
+              class="poster"
+              (click)="play()"
+              [attr.aria-label]="lang.t('Play overview video', 'تشغيل فيديو نظرة عامة')"
+            >
+              <img [src]="poster" [alt]="lang.t('Black Rock overview', 'نظرة عامة على بلاك روك')" loading="lazy" />
+              <span class="shade"></span>
+              <span class="play"><fa-icon [icon]="faPlay"></fa-icon></span>
+              <span class="label">{{ lang.t('Watch The Overview', 'شاهد الفيديو') }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

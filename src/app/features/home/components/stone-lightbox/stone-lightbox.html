@@ -1,0 +1,66 @@
+<div class="backdrop" (click)="close()" role="dialog" aria-modal="true" [attr.aria-label]="lang.l(product().name)">
+  <div class="dialog" (click)="$event.stopPropagation()">
+
+    <!-- Top bar -->
+    <div class="bar">
+      <div>
+        <h3 class="name">{{ lang.l(product().name) }}</h3>
+        <p class="meta">
+          {{ lang.l(product().finish) }} · {{ lang.l(product().color) }}
+        </p>
+      </div>
+
+      <button type="button" class="icon-btn" (click)="close()" [attr.aria-label]="lang.t('Close', 'إغلاق')">
+        <fa-icon [icon]="faClose"></fa-icon>
+      </button>
+    </div>
+
+    <!-- Stage -->
+    <div class="stage">
+      @if (media().length > 1) {
+        <button type="button" class="nav nav-prev" (click)="prev()" [attr.aria-label]="lang.t('Previous', 'السابق')">
+          <fa-icon [icon]="faPrev" class="rtl-flip"></fa-icon>
+        </button>
+      }
+
+      @if (active(); as item) {
+        @if (item.type === 'video') {
+          <video class="media" [src]="item.src" [poster]="item.poster" controls playsinline autoplay></video>
+        } @else {
+          <img class="media" [src]="item.src" [alt]="lang.l(product().name)" />
+        }
+      }
+
+      @if (media().length > 1) {
+        <button type="button" class="nav nav-next" (click)="next()" [attr.aria-label]="lang.t('Next', 'التالي')">
+          <fa-icon [icon]="faNext" class="rtl-flip"></fa-icon>
+        </button>
+      }
+    </div>
+
+    <!-- Footer -->
+    <div class="foot">
+      <div class="strip">
+        @for (m of media(); track m.src; let i = $index) {
+          <button
+            type="button"
+            class="mini"
+            [class.on]="i === index()"
+            (click)="index.set(i)"
+            [attr.aria-label]="(i + 1).toString()"
+          >
+            <img [src]="m.type === 'video' ? m.poster : m.src" alt="" loading="lazy" />
+            @if (m.type === 'video') {
+              <span class="play"><fa-icon [icon]="faPlay"></fa-icon></span>
+            }
+          </button>
+        }
+      </div>
+
+      <button type="button" class="btn-gold" (click)="inquire()">
+        <fa-icon [icon]="faWhatsapp"></fa-icon>
+        {{ lang.t('Inquire About This Stone', 'استفسر عن هذا النوع') }}
+      </button>
+    </div>
+  </div>
+</div>

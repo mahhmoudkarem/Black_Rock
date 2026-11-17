@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+
+/* =========================================================
+   Fonts
+   كل stack فيه خط لاتيني + خط عربي، فالمتصفح يختار تلقائيًا
+   الخط المناسب لكل حرف (حتى لو الجملة مخلوطة عربي وإنجليزي).
+
+   heading : Playfair Display  /  Amiri      (العناوين واللوجو)
+   body    : Inter             /  Tajawal    (النصوص)
+   ui      : Montserrat        /  Cairo      (الأزرار، القوائم، العناوين الصغيرة)
+========================================================= */
+@theme {
+  --font-sans: 'Inter', 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Playfair Display', 'Amiri', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Montserrat', 'Cairo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* خط الـ UI للعناصر التفاعلية والعناوين الصغيرة */
+.nav-link,
+.language-btn,
+.section-eyebrow,
+.primary-btn,
+.outline-btn,
+.submit-btn,
+.text-link,
+.whatsapp-link,
+.map-link,
+.back-to-top,
+.footer-heading,
+.form-group label,
+.btn-gold,
+.btn-ghost,
+.eyebrow {
+  font-family: var(--font-ui);
+}
+
+/* اللوجو */
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.brand-tagline {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+/* =========================================================
+   Arabic / RTL
+========================================================= */
+/* التباعد بين الحروف بيكسر اتصال الحروف العربية، فبنلغيه */
+html[lang='ar'] [class*='tracking-'],
+html[lang='ar'] .brand-tagline,
+html[lang='ar'] .section-eyebrow {
+  letter-spacing: normal !important;
+}
+
+html[lang='ar'] .brand-tagline {
+  font-size: 11px;
+}
+
+/* الخط العربي محتاج ارتفاع سطر أكبر */
+html[lang='ar'] h1,
+html[lang='ar'] h2,
+html[lang='ar'] h3 {
+  line-height: 1.5;
+}
+
+html[lang='ar'] p {
+  line-height: 2;
+}
+
+/* الأسهم تتقلب في العربي */
+[dir='rtl'] .rtl-flip {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+
+/* =========================================================
+   Shared building blocks (used by the Home page sections)
+========================================================= */
+.eyebrow {
+  display: inline-block;
+  color: #b08d57;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.eyebrow.on-light {
+  color: #a17c45;
+}
+
+.sec-title {
+  color: #222625;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.sec-title.on-dark {
+  color: #ffffff;
+}
+
+.btn-gold,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 28px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #c9a46a, #b08d57 55%, #9a7845);
+  color: #1c201f;
+  border: 1px solid #b08d57;
+}
+
+.btn-gold:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(176, 141, 87, 0.35);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #b08d57;
+  color: #b08d57;
+  transform: translateY(-3px);
+}
+
+/* حركة دخول عامة للعناصر (fade + slide up) */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* المستخدم اللي بيفضّل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* أنيميشن الظهور عند التمرير (directive: appReveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}

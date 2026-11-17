@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+.ticker {
+  overflow: hidden;
+  padding: 20px 0;
+  background: #b08d57;
+  background: linear-gradient(90deg, #a17c45, #c9a46a 50%, #a17c45);
+  border-block: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 38s linear infinite;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-item {
+  padding: 0 28px;
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.6vw, 30px);
+  font-weight: 600;
+  color: #1c201f;
+  white-space: nowrap;
+}
+
+.ticker-star {
+  color: rgba(28, 32, 31, 0.55);
+  font-size: 18px;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}

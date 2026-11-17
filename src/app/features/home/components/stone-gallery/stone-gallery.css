@@ -1,0 +1,129 @@
+:host {
+  display: block;
+}
+
+.gallery {
+  padding: 100px 0 110px;
+  background: radial-gradient(circle at 50% 0%, #2c3230 0%, #1a1e1d 70%);
+  overflow: hidden;
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 56px;
+}
+
+.rows {
+  display: grid;
+  gap: 20px;
+  /* تلاشي الحواف */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.row {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+}
+
+.track-a {
+  animation: scroll-left 70s linear infinite;
+}
+
+.track-b {
+  animation: scroll-right 80s linear infinite;
+}
+
+.rows:hover .track {
+  animation-play-state: paused;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
+  padding-inline-end: 20px;
+  flex-shrink: 0;
+}
+
+.card {
+  position: relative;
+  margin: 0;
+  width: 210px;
+  height: 270px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(176, 141, 87, 0.25);
+}
+
+/* إيقاع بصري: كل كارت تاني أعرض */
+.card:nth-child(3n + 2) {
+  width: 300px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  user-select: none;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card figcaption {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 36px 16px 14px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(10, 12, 11, 0.9), transparent);
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.card:hover figcaption {
+  transform: translateY(0);
+}
+
+@keyframes scroll-left {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    padding: 70px 0 80px;
+  }
+
+  .card {
+    width: 160px;
+    height: 210px;
+  }
+
+  .card:nth-child(3n + 2) {
+    width: 230px;
+  }
+}

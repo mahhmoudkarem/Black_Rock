@@ -1,0 +1,64 @@
+<section class="stages" (mouseenter)="paused.set(true)" (mouseleave)="paused.set(false)">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="head">
+      <span class="eyebrow">{{ lang.t('STORAGE & DISTRIBUTION', 'التخزين والتوزيع') }}</span>
+      <h2 class="sec-title on-dark mt-5">
+        {{ lang.t('From Our Yard To Your Site', 'من مخازننا إلى موقعك') }}
+      </h2>
+      <p class="lead">
+        {{
+          lang.t(
+            'Every order goes through careful stages of storage, packing and loading, so your stone arrives exactly as it left us.',
+            'يمر كل طلب بمراحل دقيقة من التخزين والتعبئة والتحميل، ليصلك الحجر كما غادرنا تمامًا.'
+          )
+        }}
+      </p>
+    </div>
+
+    <div class="layout">
+
+      <!-- Steps -->
+      <ol class="steps">
+        @for (s of stages; track s.title.en; let i = $index) {
+          <li>
+            <button
+              type="button"
+              class="step"
+              [class.on]="i === current()"
+              [class.paused]="paused()"
+              [attr.aria-current]="i === current()"
+              (click)="select(i)"
+            >
+              <span class="num">{{ pad(i + 1) }}</span>
+              <span class="step-body">
+                <strong>{{ lang.l(s.title) }}</strong>
+                <span class="step-text">{{ lang.l(s.text) }}</span>
+              </span>
+              <span class="bar"><span class="fill" [style.animation-duration.ms]="stageMs"></span></span>
+            </button>
+          </li>
+        }
+      </ol>
+
+      <!-- Images -->
+      <div class="visual">
+        @for (s of stages; track s.title.en; let i = $index) {
+          <div class="slide" [class.on]="i === current()" [class.single]="s.images.length === 1">
+            <div class="main">
+              <img [src]="s.images[0]" [alt]="lang.l(s.title)" loading="lazy" />
+            </div>
+            @if (s.images[1]) {
+              <div class="second">
+                <img [src]="s.images[1]" alt="" loading="lazy" />
+              </div>
+            }
+          </div>
+        }
+        <div class="corner"></div>
+        <span class="tag">{{ pad(current() + 1) }} / {{ pad(stages.length) }}</span>
+      </div>
+
+    </div>
+  </div>
+</section>

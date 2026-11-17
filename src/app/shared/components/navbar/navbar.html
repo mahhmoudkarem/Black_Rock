@@ -1,0 +1,219 @@
+
+<nav
+  class="navbar-wrapper"
+  [attr.dir]="isArabic ? 'rtl' : 'ltr'"
+>
+
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a
+        routerLink="/"
+        (click)="closeMobileMenu()"
+        class="logo flex flex-col"
+      >
+        <span class="brand-name text-2xl text-white">
+          BLACK <span class="text-[#B08D57]">ROCK</span>
+        </span>
+
+        <span class="brand-tagline text-gray-400 uppercase">
+          {{ isArabic ? 'للرخام والجرانيت' : 'MARBLE & GRANITE' }}
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-9">
+
+        <a
+          routerLink="/"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          {{ isArabic ? 'الرئيسية' : 'Home' }}
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          {{ isArabic ? 'من نحن' : 'About Us' }}
+        </a>
+
+        <!-- Products dropdown -->
+        <div
+          class="nav-dropdown"
+          [class.open]="desktopOpen()"
+          (mouseenter)="desktopOpen.set(true)"
+          (mouseleave)="desktopOpen.set(false)"
+        >
+          <button
+            type="button"
+            class="nav-link dd-trigger"
+            [class.active-link]="productsActive()"
+            aria-haspopup="menu"
+            [attr.aria-expanded]="desktopOpen()"
+            (click)="desktopOpen.set(true)"
+          >
+            {{ isArabic ? 'منتجاتنا' : 'Products' }}
+            <fa-icon [icon]="faChevronDown" class="dd-chevron"></fa-icon>
+          </button>
+
+          <div class="dd-menu" role="menu">
+            <a
+              routerLink="/products/marble"
+              routerLinkActive="on"
+              role="menuitem"
+              class="dd-item"
+              (click)="closeDropdown()"
+            >
+              <span>{{ isArabic ? 'الرخام' : 'Marble' }}</span>
+              <small>{{ marbleCount }}</small>
+            </a>
+            <a
+              routerLink="/products/granite"
+              routerLinkActive="on"
+              role="menuitem"
+              class="dd-item"
+              (click)="closeDropdown()"
+            >
+              <span>{{ isArabic ? 'الجرانيت' : 'Granite' }}</span>
+              <small>{{ graniteCount }}</small>
+            </a>
+          </div>
+        </div>
+
+        <a
+          routerLink="/projects"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          {{ isArabic ? 'مشروعاتنا' : 'Projects' }}
+        </a>
+
+        <a
+          routerLink="/contact"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          {{ isArabic ? 'تواصل معنا' : 'Contact' }}
+        </a>
+
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+
+        <!-- Language Button -->
+        <button
+          type="button"
+          (click)="toggleLanguage()"
+          class="language-btn"
+          [attr.lang]="isArabic ? 'en' : 'ar'"
+          [attr.aria-label]="isArabic ? 'Switch to English' : 'التبديل إلى العربية'"
+        >
+          <fa-icon [icon]="faGlobe"></fa-icon>
+
+          <span>
+            {{ isArabic ? 'En' : 'ع' }}
+          </span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          type="button"
+          (click)="toggleMobileMenu()"
+          class="mobile-menu-btn lg:hidden"
+          [attr.aria-label]="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
+          [attr.aria-expanded]="isMobileMenuOpen"
+        >
+          <fa-icon
+            [icon]="isMobileMenuOpen ? faXmark : faBars"
+            class="text-xl"
+          ></fa-icon>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Mobile Navigation -->
+  @if (isMobileMenuOpen) {
+    <div class="mobile-menu lg:hidden">
+
+      <div class="container mx-auto px-6 py-5 flex flex-col gap-5">
+
+        <a routerLink="/"
+           routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{ exact: true }"
+           (click)="closeMobileMenu()"
+           class="nav-link">
+          {{ isArabic ? 'الرئيسية' : 'Home' }}
+        </a>
+
+        <a routerLink="/about"
+           routerLinkActive="active-link"
+           (click)="closeMobileMenu()"
+           class="nav-link">
+          {{ isArabic ? 'من نحن' : 'About Us' }}
+        </a>
+
+        <div class="m-group">
+          <button
+            type="button"
+            class="nav-link m-trigger"
+            [class.active-link]="productsActive()"
+            [attr.aria-expanded]="mobileProductsOpen()"
+            (click)="mobileProductsOpen.set(!mobileProductsOpen())"
+          >
+            {{ isArabic ? 'منتجاتنا' : 'Products' }}
+            <fa-icon
+              [icon]="faChevronDown"
+              class="dd-chevron"
+              [class.flip]="mobileProductsOpen()"
+            ></fa-icon>
+          </button>
+
+          @if (mobileProductsOpen()) {
+            <div class="m-sub">
+              <a routerLink="/products/marble"
+                 routerLinkActive="on"
+                 (click)="closeMobileMenu()">
+                {{ isArabic ? 'الرخام' : 'Marble' }}
+                <small>{{ marbleCount }}</small>
+              </a>
+              <a routerLink="/products/granite"
+                 routerLinkActive="on"
+                 (click)="closeMobileMenu()">
+                {{ isArabic ? 'الجرانيت' : 'Granite' }}
+                <small>{{ graniteCount }}</small>
+              </a>
+            </div>
+          }
+        </div>
+
+        <a routerLink="/projects"
+           routerLinkActive="active-link"
+           (click)="closeMobileMenu()"
+           class="nav-link">
+          {{ isArabic ? 'مشروعاتنا' : 'Projects' }}
+        </a>
+
+        <a routerLink="/contact"
+           routerLinkActive="active-link"
+           (click)="closeMobileMenu()"
+           class="nav-link">
+          {{ isArabic ? 'تواصل معنا' : 'Contact' }}
+        </a>
+
+      </div>
+
+    </div>
+  }
+
+</nav>

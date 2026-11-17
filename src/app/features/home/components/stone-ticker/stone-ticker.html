@@ -1,0 +1,12 @@
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" dir="ltr">
+    @for (group of loop; track group) {
+      <div class="ticker-group">
+        @for (w of items; track w.en) {
+          <span class="ticker-item">{{ lang.l(w) }}</span>
+          <span class="ticker-star">✦</span>
+        }
+      </div>
+    }
+  </div>
+</div>

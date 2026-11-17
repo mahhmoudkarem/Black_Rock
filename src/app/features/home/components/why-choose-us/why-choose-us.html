@@ -1,0 +1,27 @@
+<section class="why">
+  <div class="container mx-auto px-6 lg:px-12">
+
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="eyebrow">{{ lang.t('WHY BLACK ROCK', 'لماذا بلاك روك؟') }}</span>
+      <h2 class="sec-title on-dark mt-5">
+        {{ lang.t('The Details That Make The Difference', 'التفاصيل التي تصنع الفرق') }}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      @for (item of items; track item.title.en; let i = $index) {
+        <div class="card">
+          <span class="big-num">{{ pad(i + 1) }}</span>
+
+          <div class="icon">
+            <fa-icon [icon]="item.icon"></fa-icon>
+          </div>
+
+          <h3 class="c-title">{{ lang.l(item.title) }}</h3>
+          <p class="c-text">{{ lang.l(item.text) }}</p>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

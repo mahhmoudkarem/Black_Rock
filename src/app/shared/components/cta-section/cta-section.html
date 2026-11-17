@@ -1,0 +1,47 @@
+<section class="cta">
+  <div class="container mx-auto px-6 lg:px-12 text-center">
+    <span class="eyebrow">{{ lang.t('LET’S START YOUR PROJECT', 'ابدأ مشروعك معنا') }}</span>
+
+    <h2 class="sec-title on-dark mt-5 mb-6">
+      {{ lang.t('Looking For The Perfect Stone?', 'تبحث عن الحجر المثالي؟') }}
+    </h2>
+
+    <p class="cta-text">
+      {{
+        lang.t(
+          'Tell us about your project and we will help you choose the right marble or granite.',
+          'أخبرنا عن مشروعك وسنساعدك في اختيار الرخام أو الجرانيت المناسب.'
+        )
+      }}
+    </p>
+
+    <div class="actions">
+      <button type="button" class="btn-gold" (click)="inquire()">
+        <fa-icon [icon]="faWhatsapp"></fa-icon>
+        {{ lang.t('Chat On WhatsApp', 'تحدث معنا على واتساب') }}
+      </button>
+
+      <a [href]="'tel:' + site.phone" class="btn-ghost" dir="ltr">
+        <fa-icon [icon]="faPhone"></fa-icon>
+        {{ site.phoneDisplay }}
+      </a>
+
+      <a [href]="site.instagram" target="_blank" rel="noopener noreferrer" class="btn-ghost" dir="ltr">
+        <fa-icon [icon]="faInstagram"></fa-icon>
+        {{ site.instagramHandle }}
+      </a>
+    </div>
+
+    <div class="social">
+      <a [href]="site.facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <fa-icon [icon]="faFacebook"></fa-icon>
+      </a>
+      <a [href]="site.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <fa-icon [icon]="faInstagram"></fa-icon>
+      </a>
+      <a [href]="site.linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <fa-icon [icon]="faLinkedin"></fa-icon>
+      </a>
+    </div>
+  </div>
+</section>
