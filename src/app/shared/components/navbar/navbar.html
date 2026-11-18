@@ -9,19 +9,31 @@
     <div class="flex items-center justify-between h-20">
 
       <!-- Logo -->
-      <a
-        routerLink="/"
-        (click)="closeMobileMenu()"
-        class="logo flex flex-col"
-      >
-        <span class="brand-name text-2xl text-white">
-          BLACK <span class="text-[#B08D57]">ROCK</span>
-        </span>
 
-        <span class="brand-tagline text-gray-400 uppercase">
-          {{ isArabic ? 'للرخام والجرانيت' : 'MARBLE & GRANITE' }}
-        </span>
-      </a>
+<!-- Logo -->
+<a
+  routerLink="/"
+  (click)="closeMobileMenu()"
+  class="logo flex items-center gap-3"
+>
+  <!-- Logo Image -->
+  <img
+    src="/black_rock_logo.png"
+    alt="Black Rock Logo"
+    class="w-12 h-12 object-contain bg-white "
+  />
+
+  <!-- Brand Text -->
+  <div class="flex flex-col">
+    <span class="brand-name text-2xl text-white leading-none">
+      BLACK <span class="text-[#B08D57]">ROCK</span>
+    </span>
+
+    <span class="brand-tagline text-gray-400 uppercase mt-1">
+      {{ isArabic ? 'للرخام والجرانيت' : 'MARBLE & GRANITE' }}
+    </span>
+  </div>
+</a>
 
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center gap-9">

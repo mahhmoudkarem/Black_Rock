@@ -48,35 +48,35 @@ export class Hero {
 
   /** لتغيير صور الهيرو: بدّل المسارات هنا (الصور في public/images/hero) */
   protected readonly slides: HeroSlide[] = [
+    // {
+    //   image: '/images/hero/nero.jpg',
+    //   stone: { en: 'Nero Marquina', ar: 'نيرو ماركينا' },
+    //   title: { en: 'Where Black Marble Becomes Art', ar: 'حين يتحول الرخام الأسود إلى فن' },
+    //   text: {
+    //     en: 'Deep black stone with dramatic white veins, made for statement walls and luxurious floors.',
+    //     ar: 'حجر أسود عميق بعروق بيضاء درامية، مصنوع للحوائط المميزة والأرضيات الفاخرة.',
+    //   },
+    // },
+    // {
+    //   image: '/images/hero/gold.jpg',
+    //   stone: { en: 'Black & Gold', ar: 'الأسود والذهبي' },
+    //   title: { en: 'Golden Veins. Endless Character.', ar: 'عروق ذهبية. شخصية لا تُنسى.' },
+    //   text: {
+    //     en: 'Every slab carries a unique pattern of natural gold lines that no two pieces share.',
+    //     ar: 'كل لوح يحمل نقشًا فريدًا من العروق الذهبية الطبيعية لا يتكرر في أي قطعة أخرى.',
+    //   },
+    // },
+    // {
+    //   image: '/images/hero/emperador-light.jpg',
+    //   stone: { en: 'Emperador Light', ar: 'إمبرادور لايت' },
+    //   title: { en: 'Warm Tones For Timeless Interiors', ar: 'درجات دافئة لتصاميم لا تفقد بريقها' },
+    //   text: {
+    //     en: 'Soft brown and beige veining that brings warmth and a calm luxury to every room.',
+    //     ar: 'عروق بنية وبيج ناعمة تمنح كل غرفة دفئًا وفخامة هادئة.',
+    //   },
+    // },
     {
-      image: '/images/hero/nero.jpg',
-      stone: { en: 'Nero Marquina', ar: 'نيرو ماركينا' },
-      title: { en: 'Where Black Marble Becomes Art', ar: 'حين يتحول الرخام الأسود إلى فن' },
-      text: {
-        en: 'Deep black stone with dramatic white veins, made for statement walls and luxurious floors.',
-        ar: 'حجر أسود عميق بعروق بيضاء درامية، مصنوع للحوائط المميزة والأرضيات الفاخرة.',
-      },
-    },
-    {
-      image: '/images/hero/gold.jpg',
-      stone: { en: 'Black & Gold', ar: 'الأسود والذهبي' },
-      title: { en: 'Golden Veins. Endless Character.', ar: 'عروق ذهبية. شخصية لا تُنسى.' },
-      text: {
-        en: 'Every slab carries a unique pattern of natural gold lines that no two pieces share.',
-        ar: 'كل لوح يحمل نقشًا فريدًا من العروق الذهبية الطبيعية لا يتكرر في أي قطعة أخرى.',
-      },
-    },
-    {
-      image: '/images/hero/emperador-light.jpg',
-      stone: { en: 'Emperador Light', ar: 'إمبرادور لايت' },
-      title: { en: 'Warm Tones For Timeless Interiors', ar: 'درجات دافئة لتصاميم لا تفقد بريقها' },
-      text: {
-        en: 'Soft brown and beige veining that brings warmth and a calm luxury to every room.',
-        ar: 'عروق بنية وبيج ناعمة تمنح كل غرفة دفئًا وفخامة هادئة.',
-      },
-    },
-    {
-      image: '/images/hero/slabs.jpg',
+      image: '/images/hero/slabs2.jpg',
       stone: { en: 'Premium Slabs', ar: 'ألواح فاخرة' },
       title: { en: 'Premium Slabs, Ready For Your Project', ar: 'ألواح فاخرة جاهزة لمشروعك' },
       text: {

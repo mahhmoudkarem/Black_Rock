@@ -80,8 +80,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 4,
-    slug: 'sparoow-pecked',
-    name: { en: 'Sparoow Pecked', ar: 'كريستا هوند' },
+    slug: 'beige-sinai-pearl',
+    name: { en: 'Beige Sinai Pearl', ar: 'كريستا هوند' },
     category: 'marble',
     description: {
       en: 'A refined stone with a matte honed finish, ideal for modern floors and exterior projects.',
@@ -93,8 +93,8 @@ export const PRODUCTS: Product[] = [
     finishKey: 'honed',
     finish: HONED,
     applications: [FLOORING, FACADES, WALLS],
-    cover: img('sparoow-pecked', 1),
-    images: gallery('sparoow-pecked', 7),
+    cover: img('beige-sinai-pearl', 1),
+    images: gallery('beige-sinai-pearl', 7),
     featured: true,
   },
   {
