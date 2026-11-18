@@ -118,8 +118,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 6,
-    slug: 'sinai-pearl-kornar',
-    name: { en: 'Sinai Pearl Kornar', ar: 'سيناء بيرل كورنر' },
+    slug: 'sinai-pearl-corner',
+    name: { en: 'Sinai Pearl corner', ar: 'سيناء بيرل كورنر' },
     category: 'marble',
     description: {
       en: 'Finished corner pieces cut from pearly cream Sinai Pearl stone, ready for stairs, edges and wall corners.',
@@ -131,8 +131,8 @@ export const PRODUCTS: Product[] = [
     finishKey: 'polished',
     finish: POLISHED,
     applications: [STAIRS, WALLS, FLOORING],
-    cover: img('sinai-pearl-kornar', 1),
-    images: gallery('sinai-pearl-kornar', 1),
+    cover: img('sinai-pearl-corner', 1),
+    images: gallery('sinai-pearl-corner', 1),
     featured: true,
   },
   {

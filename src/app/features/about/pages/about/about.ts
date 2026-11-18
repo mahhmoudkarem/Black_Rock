@@ -76,7 +76,7 @@ export class About {
           {
             image: '/images/about/mohamed-hamed.webp',
             name: 'Mohamed Hamed',
-            role: 'The Boss, Black Rock Marble & Granite',
+            role: 'Founder, Black Rock Marble & Granite',
             quote:
               'With over 10 years of industry leadership, we specialize in exporting premium-grade marble and granite that meet the highest international quality standards.',
           },
