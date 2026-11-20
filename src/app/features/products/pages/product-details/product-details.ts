@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
@@ -9,6 +9,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { LanguageService } from '../../../../core/services/LanguageService/language-service';
 import { WhatsappService } from '../../../../core/services/WhatsappService/whatsapp-service';
 import { SITE_CONFIG } from '../../../../core/config/site-config';
+import { SeoService } from '../../../../core/services/SeoService/seo-service';
 import { PRODUCTS } from '../../../../core/data/products.data';
 import { PageHero } from '../../../../shared/components/page-hero/page-hero';
 import { CtaSection } from '../../../../shared/components/cta-section/cta-section';
@@ -46,6 +47,26 @@ export class ProductDetails {
       (x) => x.id !== p.id && x.category === p.category && (x.finishKey === p.finishKey || x.tone === p.tone),
     ).slice(0, 3);
   });
+
+  private readonly seo = inject(SeoService);
+
+  constructor() {
+    // title / description / صورة مخصوصة لكل نوع حجر
+    effect(() => {
+      const p = this.product();
+      if (!p) return;
+      const type = p.category === 'granite' ? { en: 'Granite', ar: 'جرانيت' } : { en: 'Marble', ar: 'رخام' };
+      this.seo.set({
+        title: {
+          en: `${p.name.en} ${type.en} | Black Rock`,
+          ar: `${type.ar} ${p.name.ar} | بلاك روك`,
+        },
+        description: { en: p.description.en, ar: p.description.ar },
+        path: `/products/${p.slug}`,
+        image: p.cover,
+      });
+    });
+  }
 
   protected inquire(): void {
     const p = this.product();

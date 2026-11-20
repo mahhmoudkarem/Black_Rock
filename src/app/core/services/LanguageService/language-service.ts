@@ -8,7 +8,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 export type Lang = 'en' | 'ar';
 
@@ -19,11 +18,6 @@ export interface LocalizedText {
 
 const STORAGE_KEY = 'blackrock-lang';
 
-const TITLES: Record<Lang, string> = {
-  en: 'Black Rock | Marble & Granite',
-  ar: 'بلاك روك | الرخام والجرانيت',
-};
-
 /**
  * مصدر واحد للغة في كل الموقع.
  * أي كومبوننت يقرأ `lang.isArabic()` وهيتحدث تلقائيًا لما الزرار في الناف بار يتضغط.
@@ -32,7 +26,6 @@ const TITLES: Record<Lang, string> = {
 export class LanguageService {
   private readonly document = inject(DOCUMENT);
   private readonly platformId = inject(PLATFORM_ID);
-  private readonly title = inject(Title);
 
   private readonly _lang = signal<Lang>('en');
 
@@ -41,13 +34,12 @@ export class LanguageService {
   readonly dir = computed(() => (this._lang() === 'ar' ? 'rtl' : 'ltr'));
 
   constructor() {
-    // بنطبّق اللغة على <html> وعلى عنوان الصفحة كل ما تتغير
+    // بنطبّق اللغة على <html> كل ما تتغير (العنوان والـ meta مسؤولية SeoService)
     effect(() => {
       const lang = this._lang();
       const root = this.document.documentElement;
       root.lang = lang;
       root.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      this.title.setTitle(TITLES[lang]);
     });
 
     // استرجاع اللغة المحفوظة بعد الـ hydration عشان ما يحصلش mismatch مع السيرفر

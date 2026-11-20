@@ -1,13 +1,20 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
+import { PRODUCTS } from './core/data/products.data';
 
+/**
+ * كل الصفحات بتتعمل Prerender وقت الـ build (HTML جاهز) -> مناسب لـ Vercel كموقع static
+ * وجوجل بيشوف المحتوى كامل من غير ما يستنى JavaScript.
+ */
 export const serverRoutes: ServerRoute[] = [
-  // صفحات القسمين ثابتة فبتتعمل prerender (لازم قبل راوت :slug)
   { path: 'products/marble', renderMode: RenderMode.Prerender },
   { path: 'products/granite', renderMode: RenderMode.Prerender },
   {
-    // راوت فيه باراميتر (slug) - بيتعمل render على السيرفر وقت الطلب
+    // صفحة لكل نوع حجر (من products.data.ts)
     path: 'products/:slug',
-    renderMode: RenderMode.Server,
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return PRODUCTS.map((p) => ({ slug: p.slug }));
+    },
   },
   {
     path: '**',

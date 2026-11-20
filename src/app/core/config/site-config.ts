@@ -4,6 +4,11 @@
  * (الفوتر، الهوم، صفحة التواصل، About، وزر واتساب العائم).
  */
 export const SITE_CONFIG = {
+  /**
+   * ⚠️ مهم جدًا للـ SEO: الدومين الحقيقي بتاع الموقع (https + بدون / في الآخر).
+   * بيتستخدم في canonical و og:image و sitemap.xml و robots.txt.
+   */
+  siteUrl: 'https://www.blackrock-stone.com',
   /** رقم واتساب بالصيغة الدولية بدون + أو مسافات */
   whatsappNumber: '201093169042',
   /** الرقم لروابط الاتصال tel: */

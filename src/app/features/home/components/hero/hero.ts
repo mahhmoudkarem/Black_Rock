@@ -76,7 +76,7 @@ export class Hero {
     //   },
     // },
     {
-      image: '/images/hero/slabs2.png',
+      image: '/images/hero/slabs2.jpg',
       stone: { en: 'Premium Slabs', ar: 'ألواح فاخرة' },
       title: { en: 'Premium Slabs, Ready For Your Project', ar: 'ألواح فاخرة جاهزة لمشروعك' },
       text: {
