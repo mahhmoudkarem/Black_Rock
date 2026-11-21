@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
    * ⚠️ مهم جدًا للـ SEO: الدومين الحقيقي بتاع الموقع (https + بدون / في الآخر).
    * بيتستخدم في canonical و og:image و sitemap.xml و robots.txt.
    */
-  siteUrl: 'https://www.blackrock-stone.com',
+  siteUrl: 'https://www.blackrock.host',
   /** رقم واتساب بالصيغة الدولية بدون + أو مسافات */
   whatsappNumber: '201093169042',
   /** الرقم لروابط الاتصال tel: */
